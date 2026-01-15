@@ -10,9 +10,18 @@ export default function UserDropdown() {
   const [companyName, setCompanyName] = useState("Company");
 
 useEffect(() => {
-  const n = (localStorage.getItem("gt_company_name_v1") || "").trim();
-  if (n) setCompanyName(n);
+  try {
+    const raw = localStorage.getItem("gt_company_cache_v1");
+    if (!raw) return;
+
+    const parsed = JSON.parse(raw) as { company?: { name?: string } };
+    const name = (parsed?.company?.name || "").trim();
+    if (name) setCompanyName(name);
+  } catch {
+    // ignore
+  }
 }, []);
+
 
 
 function toggleDropdown(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
