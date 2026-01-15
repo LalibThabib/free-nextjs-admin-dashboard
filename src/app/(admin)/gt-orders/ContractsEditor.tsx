@@ -435,6 +435,7 @@ return (
           <th className="py-2 text-left">Client</th>
           <th className="py-2 text-right">Status</th>
           <th className="py-2 text-right">Missing</th>
+          <th className="py-2 text-right">Value</th>
           <th className="py-2 text-right">Actions</th>
         </tr>
       </thead>
@@ -537,7 +538,7 @@ return (
 
         {contractStatus.length === 0 && !draftContract ? (
           <tr>
-            <td className="py-4 text-sm opacity-70" colSpan={6}>
+            <td className="py-4 text-sm opacity-70" colSpan={7}>
               No contracts yet.
             </td>
           </tr>
@@ -622,6 +623,16 @@ const isEditing = editingId === rowId;
       </td>
 
       <td className="py-2 text-right">{r.missing}</td>
+
+<td className="py-2 text-right">
+  {fmtMoney(
+    (() => {
+      const px = priceMap.get(r.product);
+      const unit = px?.avg ?? px?.current ?? null;
+      return unit === null ? null : r.unitsPerDay * unit;
+    })()
+  )}
+</td>
 
       <td className="py-2 text-right">
         {isEditing && c ? (
