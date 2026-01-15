@@ -158,6 +158,43 @@ const [priceMap, setPriceMap] = useState<Map<string, { current: number | null; a
   () => new Map()
 );
 
+const LS_MAT_WEIGHTS = "gt_mat_weights_v1";
+const [weightByName, setWeightByName] = useState<Map<string, number>>(new Map());
+
+useEffect(() => {
+  if (typeof window === "undefined") return;
+
+  // load cached weights first (if any)
+  try {
+    const raw = localStorage.getItem(LS_MAT_WEIGHTS);
+    if (raw) setWeightByName(new Map(JSON.parse(raw)));
+  } catch {
+    // ignore
+  }
+
+  if (!apiKey?.trim()) return;
+
+  // refresh weights from API (best-effort)
+  fetch("https://api.g2.galactictycoons.com/public/exchange/mat-details", {
+    headers: { Authorization: `Bearer ${apiKey}` },
+  })
+    .then((r) => r.json())
+    .then((data) => {
+      const m = new Map<string, number>();
+      for (const mat of data?.materials || []) {
+        const name = String(mat?.matName ?? mat?.name ?? "").trim();
+        const rawW = mat?.weight ?? mat?.mass ?? mat?.w ?? mat?.unitWeight;
+        const w = typeof rawW === "string" ? parseFloat(rawW) : Number(rawW);
+        if (name && Number.isFinite(w)) m.set(name, w);
+      }
+      if (m.size) {
+        setWeightByName(m);
+        localStorage.setItem(LS_MAT_WEIGHTS, JSON.stringify(Array.from(m.entries())));
+      }
+    })
+    .catch(() => {});
+}, [apiKey]);
+
 const materialByName = React.useMemo(() => {
   // Uses the same cache you already write: localStorage.setItem("gt_materials_v1", JSON.stringify(mats))
   if (typeof window === "undefined") return new Map<string, any>();
@@ -796,11 +833,12 @@ const isEditing = editingId === rowId;
       <td className="py-2 text-left"><MaterialLabel name={r.material} /></td>
       <td className="py-2 text-left">{r.units}</td>
       <td className="py-2 text-left">
-      {(() => {
-    const w = materialByName.get(r.material)?.weight;
+  {(() => {
+    const w = weightByName.get(r.material);
     return w == null ? "—" : `${(r.units * w).toFixed(2)} kg`;
-        })()}
-      </td>
+  })()}
+</td>
+
 
       
       <td className="py-2 text-left">{r.from} → {r.to}</td>
