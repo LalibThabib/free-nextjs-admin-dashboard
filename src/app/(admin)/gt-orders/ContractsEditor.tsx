@@ -17,9 +17,11 @@ import { computeIngredientTransportNeeded } from "./lib/planner";
 import { useHeaderSlot } from "@/context/HeaderSlotContext";
 import { MaterialLabel } from "@/components/common/MaterialLabel";
 import { loadCompanyDirectory } from "./lib/gtApi";
+import Link from "next/link";
 
 
 
+const BASE_PATH = process.env.NODE_ENV === "production" ? "/free-nextjs-admin-dashboard" : "";
 
 export default function ContractsEditor() {
 
@@ -314,7 +316,7 @@ useEffect(() => {
  // Load shared directory shipped with the app + merge with local cached directory
 (async () => {
   try {
-    const shipped = await fetch("/images/company-directory.json").then((r) => r.json());
+    const shipped = await fetch(`${BASE_PATH}/images/company-directory.json`).then((r) => r.json());
     const shippedNames: string[] = (shipped?.companies || []).map((c: any) => String(c?.name || "").trim());
 
     const localNames = loadCompanyDirectory().companies.map((c) => c.name);
@@ -400,9 +402,9 @@ return (
   <div className="mt-3 flex items-center gap-3 text-sm text-red-600">
     <span>{stocksErr}</span>
     {stocksErr.includes("API key") ? (
-      <a href="/settings" className="rounded border px-2 py-1 text-xs text-red-600">
-        Go to Settings
-      </a>
+      <Link href="/settings" className="rounded border px-2 py-1 text-xs text-red-600">
+  Go to Settings
+</Link>
     ) : null}
   </div>
 )}
