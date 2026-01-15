@@ -828,12 +828,21 @@ const isEditing = editingId === rowId;
     <tr key={`${r.material}|${r.from}|${r.to}|${idx}`} className="border-b">
       <td className="py-2 text-left"><MaterialLabel name={r.material} /></td>
       <td className="py-2 text-left">{r.units}</td>
-      <td className="py-2 text-left">
+     <td className="py-2 text-left">
   {(() => {
-    const w = weightByName.get(r.material);
-    return w == null ? "—" : `${(r.units * w).toFixed(2)} kg`;
+    const w = weightByName.get(r.material); // tonnes per unit
+    if (w == null) return "—";
+
+    const total = r.units * w; // tonnes
+    const rounded1 = Math.round(total * 10) / 10;
+
+    const text =
+      Number.isInteger(rounded1) ? String(rounded1) : rounded1.toFixed(1);
+
+    return `${text} t`;
   })()}
 </td>
+
 
 
       
