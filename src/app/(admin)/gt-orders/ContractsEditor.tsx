@@ -90,7 +90,10 @@ useEffect(() => {
 
     try {
       // 2) Fetch + cache
-      const lines = await fetchRecipeLines();
+      const base = process.env.NODE_ENV === "production" ? "/free-nextjs-admin-dashboard" : "";
+const lines = await fetch(`${base}/data/recipes.json`).then((r) => r.json());
+setRecipeMap(buildRecipeMap(lines));
+
       localStorage.setItem(LS_KEY, JSON.stringify({ ts: Date.now(), lines }));
       setRecipeMap(buildRecipeMap(lines));
     } catch (e) {

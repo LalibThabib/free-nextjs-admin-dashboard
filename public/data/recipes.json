@@ -1,0 +1,3224 @@
+[
+    {
+        "output": "Iron",
+        "outputQty": 3,
+        "input": "Iron Ore",
+        "inputQty": 5
+    },
+    {
+        "output": "Iron",
+        "outputQty": 3,
+        "input": "Oxygen",
+        "inputQty": 4
+    },
+    {
+        "output": "Copper",
+        "outputQty": 1,
+        "input": "Copper Ore",
+        "inputQty": 2
+    },
+    {
+        "output": "Copper",
+        "outputQty": 1,
+        "input": "Oxygen",
+        "inputQty": 2
+    },
+    {
+        "output": "Copper",
+        "outputQty": 1,
+        "input": "Flux",
+        "inputQty": 1
+    },
+    {
+        "output": "Concrete",
+        "outputQty": 12,
+        "input": "Limestone",
+        "inputQty": 4
+    },
+    {
+        "output": "Concrete",
+        "outputQty": 12,
+        "input": "Silica",
+        "inputQty": 4
+    },
+    {
+        "output": "Hydrogen Fuel",
+        "outputQty": 8,
+        "input": "Iron",
+        "inputQty": 1
+    },
+    {
+        "output": "Hydrogen Fuel",
+        "outputQty": 8,
+        "input": "Hydrogen",
+        "inputQty": 6
+    },
+    {
+        "output": "Hydrogen Fuel",
+        "outputQty": 8,
+        "input": "Oxygen",
+        "inputQty": 4
+    },
+    {
+        "output": "Ale",
+        "outputQty": 13,
+        "input": "Grain",
+        "inputQty": 20
+    },
+    {
+        "output": "Ale",
+        "outputQty": 13,
+        "input": "Drinking Water",
+        "inputQty": 12
+    },
+    {
+        "output": "Rations",
+        "outputQty": 20,
+        "input": "Fruits",
+        "inputQty": 4
+    },
+    {
+        "output": "Rations",
+        "outputQty": 20,
+        "input": "Vegetables",
+        "inputQty": 4
+    },
+    {
+        "output": "Tesserite",
+        "outputQty": 35,
+        "input": "Mining Vehicle",
+        "inputQty": 1
+    },
+    {
+        "output": "Tesserite",
+        "outputQty": 35,
+        "input": "Titanium Carbide Drill",
+        "inputQty": 2
+    },
+    {
+        "output": "Bioxene",
+        "outputQty": 35,
+        "input": "Filtration System",
+        "inputQty": 1
+    },
+    {
+        "output": "Tools",
+        "outputQty": 10,
+        "input": "Iron",
+        "inputQty": 1
+    },
+    {
+        "output": "Tools",
+        "outputQty": 10,
+        "input": "Wood",
+        "inputQty": 2
+    },
+    {
+        "output": "Neoplast",
+        "outputQty": 25,
+        "input": "Carbon",
+        "inputQty": 2
+    },
+    {
+        "output": "Neoplast",
+        "outputQty": 25,
+        "input": "Hydrogen",
+        "inputQty": 2
+    },
+    {
+        "output": "Neoplast",
+        "outputQty": 25,
+        "input": "Nitrogen",
+        "inputQty": 2
+    },
+    {
+        "output": "Antimatter",
+        "outputQty": 1,
+        "input": "Hydrogen",
+        "inputQty": 5
+    },
+    {
+        "output": "Antimatter",
+        "outputQty": 1,
+        "input": "Kryon",
+        "inputQty": 5
+    },
+    {
+        "output": "Antimatter",
+        "outputQty": 1,
+        "input": "Quadranium",
+        "inputQty": 1
+    },
+    {
+        "output": "Antimatter",
+        "outputQty": 1,
+        "input": "Antimatter Containment",
+        "inputQty": 1
+    },
+    {
+        "output": "Antimatter",
+        "outputQty": 1,
+        "input": "Superconducting Coil",
+        "inputQty": 3
+    },
+    {
+        "output": "Construction Tools",
+        "outputQty": 5,
+        "input": "Iron",
+        "inputQty": 1
+    },
+    {
+        "output": "Construction Tools",
+        "outputQty": 5,
+        "input": "Polyethylene",
+        "inputQty": 15
+    },
+    {
+        "output": "Glass",
+        "outputQty": 8,
+        "input": "Limestone",
+        "inputQty": 3
+    },
+    {
+        "output": "Glass",
+        "outputQty": 8,
+        "input": "Silica",
+        "inputQty": 3
+    },
+    {
+        "output": "Fruits",
+        "outputQty": 11,
+        "input": "Water",
+        "inputQty": 8
+    },
+    {
+        "output": "Vegetables",
+        "outputQty": 11,
+        "input": "Water",
+        "inputQty": 9
+    },
+    {
+        "output": "Construction Kit",
+        "outputQty": 5,
+        "input": "Polyethylene",
+        "inputQty": 75
+    },
+    {
+        "output": "Construction Kit",
+        "outputQty": 5,
+        "input": "Construction Tools",
+        "inputQty": 3
+    },
+    {
+        "output": "Construction Kit",
+        "outputQty": 5,
+        "input": "Construction Vehicle",
+        "inputQty": 1
+    },
+    {
+        "output": "Steel",
+        "outputQty": 2,
+        "input": "Iron",
+        "inputQty": 2
+    },
+    {
+        "output": "Steel",
+        "outputQty": 2,
+        "input": "Carbon",
+        "inputQty": 1
+    },
+    {
+        "output": "Steel",
+        "outputQty": 2,
+        "input": "Oxygen",
+        "inputQty": 4
+    },
+    {
+        "output": "Steel",
+        "outputQty": 2,
+        "input": "Flux",
+        "inputQty": 3
+    },
+    {
+        "output": "Fertilizer",
+        "outputQty": 20,
+        "input": "Limestone",
+        "inputQty": 4
+    },
+    {
+        "output": "Fertilizer",
+        "outputQty": 20,
+        "input": "Nitrogen",
+        "inputQty": 2
+    },
+    {
+        "output": "Fruits",
+        "outputQty": 13,
+        "input": "Water",
+        "inputQty": 7
+    },
+    {
+        "output": "Fruits",
+        "outputQty": 13,
+        "input": "Fertilizer",
+        "inputQty": 2
+    },
+    {
+        "output": "Vegetables",
+        "outputQty": 16,
+        "input": "Water",
+        "inputQty": 10
+    },
+    {
+        "output": "Vegetables",
+        "outputQty": 16,
+        "input": "Fertilizer",
+        "inputQty": 2
+    },
+    {
+        "output": "Drinking Water",
+        "outputQty": 30,
+        "input": "Water",
+        "inputQty": 11
+    },
+    {
+        "output": "Grain",
+        "outputQty": 25,
+        "input": "Water",
+        "inputQty": 5
+    },
+    {
+        "output": "Cows",
+        "outputQty": 3,
+        "input": "Grain",
+        "inputQty": 40
+    },
+    {
+        "output": "Cows",
+        "outputQty": 3,
+        "input": "Water",
+        "inputQty": 8
+    },
+    {
+        "output": "Meat",
+        "outputQty": 16,
+        "input": "Cows",
+        "inputQty": 1
+    },
+    {
+        "output": "Rations",
+        "outputQty": 20,
+        "input": "Meat",
+        "inputQty": 4
+    },
+    {
+        "output": "Rations",
+        "outputQty": 20,
+        "input": "Vegetables",
+        "inputQty": 4
+    },
+    {
+        "output": "Fine Rations",
+        "outputQty": 12,
+        "input": "Fruits",
+        "inputQty": 4
+    },
+    {
+        "output": "Fine Rations",
+        "outputQty": 12,
+        "input": "Meat",
+        "inputQty": 4
+    },
+    {
+        "output": "Fine Rations",
+        "outputQty": 12,
+        "input": "Vegetables",
+        "inputQty": 4
+    },
+    {
+        "output": "Cotton",
+        "outputQty": 14,
+        "input": "Water",
+        "inputQty": 8
+    },
+    {
+        "output": "Polyethylene",
+        "outputQty": 50,
+        "input": "Carbon",
+        "inputQty": 2
+    },
+    {
+        "output": "Polyethylene",
+        "outputQty": 50,
+        "input": "Hydrogen",
+        "inputQty": 4
+    },
+    {
+        "output": "Flux",
+        "outputQty": 10,
+        "input": "Limestone",
+        "inputQty": 4
+    },
+    {
+        "output": "Aluminium",
+        "outputQty": 2,
+        "input": "Aluminium Ore",
+        "inputQty": 5
+    },
+    {
+        "output": "Aluminium",
+        "outputQty": 2,
+        "input": "Oxygen",
+        "inputQty": 5
+    },
+    {
+        "output": "Antimatter Containment",
+        "outputQty": 2,
+        "input": "Argon",
+        "inputQty": 2
+    },
+    {
+        "output": "Antimatter Containment",
+        "outputQty": 2,
+        "input": "Starglass",
+        "inputQty": 1
+    },
+    {
+        "output": "Antimatter Containment",
+        "outputQty": 2,
+        "input": "Battery",
+        "inputQty": 1
+    },
+    {
+        "output": "Antimatter Containment",
+        "outputQty": 2,
+        "input": "Superconducting Coil",
+        "inputQty": 1
+    },
+    {
+        "output": "Titanium Ore",
+        "outputQty": 28,
+        "input": "Drill",
+        "inputQty": 2
+    },
+    {
+        "output": "Titanium Ore",
+        "outputQty": 28,
+        "input": "Mining Vehicle",
+        "inputQty": 1
+    },
+    {
+        "output": "Titanium",
+        "outputQty": 1,
+        "input": "Titanium Ore",
+        "inputQty": 2
+    },
+    {
+        "output": "Titanium",
+        "outputQty": 1,
+        "input": "Argon",
+        "inputQty": 2
+    },
+    {
+        "output": "Titanium",
+        "outputQty": 1,
+        "input": "Flux",
+        "inputQty": 3
+    },
+    {
+        "output": "Exosuit",
+        "outputQty": 5,
+        "input": "Aluminium",
+        "inputQty": 2
+    },
+    {
+        "output": "Exosuit",
+        "outputQty": 5,
+        "input": "Kevlar",
+        "inputQty": 1
+    },
+    {
+        "output": "Exosuit",
+        "outputQty": 5,
+        "input": "Electric Motor",
+        "inputQty": 1
+    },
+    {
+        "output": "Advanced Tools",
+        "outputQty": 15,
+        "input": "Aluminium",
+        "inputQty": 3
+    },
+    {
+        "output": "Advanced Tools",
+        "outputQty": 15,
+        "input": "Neoplast",
+        "inputQty": 10
+    },
+    {
+        "output": "Advanced Tools",
+        "outputQty": 15,
+        "input": "Electronic Circuit",
+        "inputQty": 1
+    },
+    {
+        "output": "Wood",
+        "outputQty": 13,
+        "input": "Water",
+        "inputQty": 8
+    },
+    {
+        "output": "Carbon",
+        "outputQty": 4,
+        "input": "Wood",
+        "inputQty": 5
+    },
+    {
+        "output": "Leather",
+        "outputQty": 12,
+        "input": "Cows",
+        "inputQty": 1
+    },
+    {
+        "output": "Workwear",
+        "outputQty": 10,
+        "input": "Leather",
+        "inputQty": 3
+    },
+    {
+        "output": "Workwear",
+        "outputQty": 10,
+        "input": "Fabric",
+        "inputQty": 4
+    },
+    {
+        "output": "Fabric",
+        "outputQty": 15,
+        "input": "Cotton",
+        "inputQty": 10
+    },
+    {
+        "output": "Fabric",
+        "outputQty": 15,
+        "input": "Polyethylene",
+        "inputQty": 30
+    },
+    {
+        "output": "Coffee Beans",
+        "outputQty": 12,
+        "input": "Water",
+        "inputQty": 10
+    },
+    {
+        "output": "Coffee",
+        "outputQty": 7,
+        "input": "Milk",
+        "inputQty": 2
+    },
+    {
+        "output": "Coffee",
+        "outputQty": 7,
+        "input": "Coffee Beans",
+        "inputQty": 4
+    },
+    {
+        "output": "Coffee",
+        "outputQty": 7,
+        "input": "Drinking Water",
+        "inputQty": 2
+    },
+    {
+        "output": "Construction Vehicle",
+        "outputQty": 1,
+        "input": "Iron",
+        "inputQty": 2
+    },
+    {
+        "output": "Construction Vehicle",
+        "outputQty": 1,
+        "input": "Fabric",
+        "inputQty": 6
+    },
+    {
+        "output": "Construction Vehicle",
+        "outputQty": 1,
+        "input": "Rubber",
+        "inputQty": 10
+    },
+    {
+        "output": "Construction Vehicle",
+        "outputQty": 1,
+        "input": "Combustion Engine",
+        "inputQty": 1
+    },
+    {
+        "output": "Rubber",
+        "outputQty": 30,
+        "input": "Carbon",
+        "inputQty": 1
+    },
+    {
+        "output": "Rubber",
+        "outputQty": 30,
+        "input": "Polyethylene",
+        "inputQty": 10
+    },
+    {
+        "output": "Combustion Engine",
+        "outputQty": 2,
+        "input": "Steel",
+        "inputQty": 1
+    },
+    {
+        "output": "Combustion Engine",
+        "outputQty": 2,
+        "input": "Ethanol",
+        "inputQty": 10
+    },
+    {
+        "output": "Combustion Engine",
+        "outputQty": 2,
+        "input": "Lubricant",
+        "inputQty": 5
+    },
+    {
+        "output": "Ethanol",
+        "outputQty": 25,
+        "input": "Carbon",
+        "inputQty": 1
+    },
+    {
+        "output": "Ethanol",
+        "outputQty": 25,
+        "input": "Hydrogen",
+        "inputQty": 5
+    },
+    {
+        "output": "Ethanol",
+        "outputQty": 25,
+        "input": "Water",
+        "inputQty": 4
+    },
+    {
+        "output": "Lubricant",
+        "outputQty": 40,
+        "input": "Hydrogen",
+        "inputQty": 4
+    },
+    {
+        "output": "Lubricant",
+        "outputQty": 40,
+        "input": "Polyethylene",
+        "inputQty": 20
+    },
+    {
+        "output": "Lubricant",
+        "outputQty": 40,
+        "input": "Ethanol",
+        "inputQty": 6
+    },
+    {
+        "output": "Grain",
+        "outputQty": 30,
+        "input": "Water",
+        "inputQty": 5
+    },
+    {
+        "output": "Grain",
+        "outputQty": 30,
+        "input": "Fertilizer",
+        "inputQty": 2
+    },
+    {
+        "output": "Lithium",
+        "outputQty": 3,
+        "input": "Iron Ore",
+        "inputQty": 3
+    },
+    {
+        "output": "Lithium",
+        "outputQty": 3,
+        "input": "Water",
+        "inputQty": 3
+    },
+    {
+        "output": "Lithium",
+        "outputQty": 3,
+        "input": "Sulfuric Acid",
+        "inputQty": 4
+    },
+    {
+        "output": "Battery",
+        "outputQty": 5,
+        "input": "Copper",
+        "inputQty": 1
+    },
+    {
+        "output": "Battery",
+        "outputQty": 5,
+        "input": "Lithium",
+        "inputQty": 1
+    },
+    {
+        "output": "Battery",
+        "outputQty": 5,
+        "input": "Polyethylene",
+        "inputQty": 15
+    },
+    {
+        "output": "Sulfuric Acid",
+        "outputQty": 20,
+        "input": "Copper Ore",
+        "inputQty": 2
+    },
+    {
+        "output": "Sulfuric Acid",
+        "outputQty": 20,
+        "input": "Oxygen",
+        "inputQty": 5
+    },
+    {
+        "output": "Sulfuric Acid",
+        "outputQty": 20,
+        "input": "Water",
+        "inputQty": 3
+    },
+    {
+        "output": "Electric Motor",
+        "outputQty": 3,
+        "input": "Iron",
+        "inputQty": 2
+    },
+    {
+        "output": "Electric Motor",
+        "outputQty": 3,
+        "input": "Lubricant",
+        "inputQty": 2
+    },
+    {
+        "output": "Electric Motor",
+        "outputQty": 3,
+        "input": "Battery",
+        "inputQty": 1
+    },
+    {
+        "output": "Electric Motor",
+        "outputQty": 3,
+        "input": "Copper Wire",
+        "inputQty": 7
+    },
+    {
+        "output": "Copper Wire",
+        "outputQty": 20,
+        "input": "Copper",
+        "inputQty": 1
+    },
+    {
+        "output": "Electronic Circuit",
+        "outputQty": 5,
+        "input": "Polyethylene",
+        "inputQty": 10
+    },
+    {
+        "output": "Electronic Circuit",
+        "outputQty": 5,
+        "input": "Transistor",
+        "inputQty": 10
+    },
+    {
+        "output": "Electronic Circuit",
+        "outputQty": 5,
+        "input": "Copper Wire",
+        "inputQty": 4
+    },
+    {
+        "output": "Consumer Electronics",
+        "outputQty": 2,
+        "input": "Glass",
+        "inputQty": 2
+    },
+    {
+        "output": "Consumer Electronics",
+        "outputQty": 2,
+        "input": "Polyethylene",
+        "inputQty": 15
+    },
+    {
+        "output": "Consumer Electronics",
+        "outputQty": 2,
+        "input": "Electronic Circuit",
+        "inputQty": 1
+    },
+    {
+        "output": "Research Data",
+        "outputQty": 1,
+        "input": "Iron",
+        "inputQty": 1
+    },
+    {
+        "output": "Research Data",
+        "outputQty": 1,
+        "input": "Concrete",
+        "inputQty": 5
+    },
+    {
+        "output": "Research Data",
+        "outputQty": 1,
+        "input": "Office Supplies",
+        "inputQty": 4
+    },
+    {
+        "output": "Office Supplies",
+        "outputQty": 10,
+        "input": "Wood",
+        "inputQty": 2
+    },
+    {
+        "output": "Office Supplies",
+        "outputQty": 10,
+        "input": "Polyethylene",
+        "inputQty": 10
+    },
+    {
+        "output": "Research Data",
+        "outputQty": 1,
+        "input": "Fruits",
+        "inputQty": 3
+    },
+    {
+        "output": "Research Data",
+        "outputQty": 1,
+        "input": "Grain",
+        "inputQty": 10
+    },
+    {
+        "output": "Research Data",
+        "outputQty": 1,
+        "input": "Vegetables",
+        "inputQty": 3
+    },
+    {
+        "output": "Research Data",
+        "outputQty": 1,
+        "input": "Office Supplies",
+        "inputQty": 2
+    },
+    {
+        "output": "Research Data",
+        "outputQty": 1,
+        "input": "Fertilizer",
+        "inputQty": 4
+    },
+    {
+        "output": "Research Data",
+        "outputQty": 1,
+        "input": "Hydrogen",
+        "inputQty": 2
+    },
+    {
+        "output": "Research Data",
+        "outputQty": 1,
+        "input": "Oxygen",
+        "inputQty": 2
+    },
+    {
+        "output": "Research Data",
+        "outputQty": 1,
+        "input": "Nitrogen",
+        "inputQty": 1
+    },
+    {
+        "output": "Research Data",
+        "outputQty": 1,
+        "input": "Office Supplies",
+        "inputQty": 4
+    },
+    {
+        "output": "Milk",
+        "outputQty": 25,
+        "input": "Cows",
+        "inputQty": 1
+    },
+    {
+        "output": "Milk",
+        "outputQty": 25,
+        "input": "Grain",
+        "inputQty": 10
+    },
+    {
+        "output": "Milk",
+        "outputQty": 25,
+        "input": "Polyethylene",
+        "inputQty": 5
+    },
+    {
+        "output": "Composite Truss",
+        "outputQty": 5,
+        "input": "Steel",
+        "inputQty": 1
+    },
+    {
+        "output": "Composite Truss",
+        "outputQty": 5,
+        "input": "Titanium",
+        "inputQty": 1
+    },
+    {
+        "output": "Composite Truss",
+        "outputQty": 5,
+        "input": "Argon",
+        "inputQty": 2
+    },
+    {
+        "output": "Composite Truss",
+        "outputQty": 5,
+        "input": "Epoxy",
+        "inputQty": 5
+    },
+    {
+        "output": "Pipes",
+        "outputQty": 5,
+        "input": "Iron",
+        "inputQty": 2
+    },
+    {
+        "output": "Pipes",
+        "outputQty": 5,
+        "input": "Polyethylene",
+        "inputQty": 25
+    },
+    {
+        "output": "Kryon",
+        "outputQty": 35,
+        "input": "Filtration System",
+        "inputQty": 1
+    },
+    {
+        "output": "Coolant",
+        "outputQty": 20,
+        "input": "Hydrogen",
+        "inputQty": 2
+    },
+    {
+        "output": "Coolant",
+        "outputQty": 20,
+        "input": "Water",
+        "inputQty": 3
+    },
+    {
+        "output": "Coolant",
+        "outputQty": 20,
+        "input": "Nitrogen",
+        "inputQty": 2
+    },
+    {
+        "output": "Epoxy",
+        "outputQty": 15,
+        "input": "Nitrogen",
+        "inputQty": 1
+    },
+    {
+        "output": "Epoxy",
+        "outputQty": 15,
+        "input": "Neoplast",
+        "inputQty": 3
+    },
+    {
+        "output": "Epoxy",
+        "outputQty": 15,
+        "input": "Ethanol",
+        "inputQty": 5
+    },
+    {
+        "output": "Fission Fuel",
+        "outputQty": 1,
+        "input": "Aluminium",
+        "inputQty": 1
+    },
+    {
+        "output": "Fission Fuel",
+        "outputQty": 1,
+        "input": "Carbon",
+        "inputQty": 1
+    },
+    {
+        "output": "Fission Fuel",
+        "outputQty": 1,
+        "input": "Uranium Ore",
+        "inputQty": 3
+    },
+    {
+        "output": "Fission Fuel",
+        "outputQty": 1,
+        "input": "Coolant",
+        "inputQty": 6
+    },
+    {
+        "output": "Advanced Research Data",
+        "outputQty": 1,
+        "input": "Copper",
+        "inputQty": 1
+    },
+    {
+        "output": "Advanced Research Data",
+        "outputQty": 1,
+        "input": "Coolant",
+        "inputQty": 5
+    },
+    {
+        "output": "Advanced Research Data",
+        "outputQty": 1,
+        "input": "Consumer Electronics",
+        "inputQty": 1
+    },
+    {
+        "output": "Advanced Research Data",
+        "outputQty": 1,
+        "input": "Advanced Circuit Board",
+        "inputQty": 1
+    },
+    {
+        "output": "Kevlar",
+        "outputQty": 10,
+        "input": "Titanium",
+        "inputQty": 1
+    },
+    {
+        "output": "Kevlar",
+        "outputQty": 10,
+        "input": "Neoplast",
+        "inputQty": 10
+    },
+    {
+        "output": "Kevlar",
+        "outputQty": 10,
+        "input": "Epoxy",
+        "inputQty": 5
+    },
+    {
+        "output": "Platinum Ore",
+        "outputQty": 28,
+        "input": "Drill",
+        "inputQty": 2
+    },
+    {
+        "output": "Platinum Ore",
+        "outputQty": 28,
+        "input": "Mining Vehicle",
+        "inputQty": 1
+    },
+    {
+        "output": "Platinum",
+        "outputQty": 1,
+        "input": "Platinum Ore",
+        "inputQty": 2
+    },
+    {
+        "output": "Platinum",
+        "outputQty": 1,
+        "input": "Nitrogen",
+        "inputQty": 1
+    },
+    {
+        "output": "Platinum",
+        "outputQty": 1,
+        "input": "Argon",
+        "inputQty": 1
+    },
+    {
+        "output": "Platinum",
+        "outputQty": 1,
+        "input": "Flux",
+        "inputQty": 3
+    },
+    {
+        "output": "Graphene",
+        "outputQty": 7,
+        "input": "Carbon",
+        "inputQty": 1
+    },
+    {
+        "output": "Graphene",
+        "outputQty": 7,
+        "input": "Argon",
+        "inputQty": 3
+    },
+    {
+        "output": "Graphene",
+        "outputQty": 7,
+        "input": "Coolant",
+        "inputQty": 5
+    },
+    {
+        "output": "Graphene",
+        "outputQty": 7,
+        "input": "Epoxy",
+        "inputQty": 5
+    },
+    {
+        "output": "Carbon Nanotubes",
+        "outputQty": 6,
+        "input": "Titanium",
+        "inputQty": 1
+    },
+    {
+        "output": "Carbon Nanotubes",
+        "outputQty": 6,
+        "input": "Carbon",
+        "inputQty": 3
+    },
+    {
+        "output": "Carbon Nanotubes",
+        "outputQty": 6,
+        "input": "Hydrogen",
+        "inputQty": 2
+    },
+    {
+        "output": "Carbon Nanotubes",
+        "outputQty": 6,
+        "input": "Argon",
+        "inputQty": 3
+    },
+    {
+        "output": "Aerogel",
+        "outputQty": 10,
+        "input": "Carbon",
+        "inputQty": 1
+    },
+    {
+        "output": "Aerogel",
+        "outputQty": 10,
+        "input": "Silica",
+        "inputQty": 4
+    },
+    {
+        "output": "Aerogel",
+        "outputQty": 10,
+        "input": "Water",
+        "inputQty": 2
+    },
+    {
+        "output": "Aerogel",
+        "outputQty": 10,
+        "input": "Argon",
+        "inputQty": 2
+    },
+    {
+        "output": "Reinforced Glass",
+        "outputQty": 6,
+        "input": "Nitrogen",
+        "inputQty": 2
+    },
+    {
+        "output": "Reinforced Glass",
+        "outputQty": 6,
+        "input": "Glass",
+        "inputQty": 6
+    },
+    {
+        "output": "Reinforced Glass",
+        "outputQty": 6,
+        "input": "Neoplast",
+        "inputQty": 5
+    },
+    {
+        "output": "Color Compound",
+        "outputQty": 15,
+        "input": "Fruits",
+        "inputQty": 6
+    },
+    {
+        "output": "Color Compound",
+        "outputQty": 15,
+        "input": "Grain",
+        "inputQty": 10
+    },
+    {
+        "output": "Color Compound",
+        "outputQty": 15,
+        "input": "Ethanol",
+        "inputQty": 6
+    },
+    {
+        "output": "Mining Vehicle",
+        "outputQty": 1,
+        "input": "Steel",
+        "inputQty": 1
+    },
+    {
+        "output": "Mining Vehicle",
+        "outputQty": 1,
+        "input": "Rubber",
+        "inputQty": 10
+    },
+    {
+        "output": "Mining Vehicle",
+        "outputQty": 1,
+        "input": "Combustion Engine",
+        "inputQty": 1
+    },
+    {
+        "output": "Mining Vehicle",
+        "outputQty": 1,
+        "input": "Electronic Circuit",
+        "inputQty": 2
+    },
+    {
+        "output": "Drill",
+        "outputQty": 2,
+        "input": "Steel",
+        "inputQty": 1
+    },
+    {
+        "output": "Drill",
+        "outputQty": 2,
+        "input": "Lubricant",
+        "inputQty": 10
+    },
+    {
+        "output": "Titanium Carbide Drill",
+        "outputQty": 3,
+        "input": "Titanium",
+        "inputQty": 1
+    },
+    {
+        "output": "Titanium Carbide Drill",
+        "outputQty": 3,
+        "input": "Carbon Nanotubes",
+        "inputQty": 1
+    },
+    {
+        "output": "Titanium Carbide Drill",
+        "outputQty": 3,
+        "input": "Lubricant",
+        "inputQty": 10
+    },
+    {
+        "output": "Quadranium",
+        "outputQty": 1,
+        "input": "Tesserite",
+        "inputQty": 1
+    },
+    {
+        "output": "Quadranium",
+        "outputQty": 1,
+        "input": "Kryon",
+        "inputQty": 1
+    },
+    {
+        "output": "Quadranium",
+        "outputQty": 1,
+        "input": "Sulfuric Acid",
+        "inputQty": 4
+    },
+    {
+        "output": "Research Data",
+        "outputQty": 1,
+        "input": "Office Supplies",
+        "inputQty": 4
+    },
+    {
+        "output": "Research Data",
+        "outputQty": 1,
+        "input": "Tools",
+        "inputQty": 4
+    },
+    {
+        "output": "Research Data",
+        "outputQty": 1,
+        "input": "Polyethylene",
+        "inputQty": 20
+    },
+    {
+        "output": "Prefab Kit",
+        "outputQty": 1,
+        "input": "Iron",
+        "inputQty": 2
+    },
+    {
+        "output": "Prefab Kit",
+        "outputQty": 1,
+        "input": "Concrete",
+        "inputQty": 10
+    },
+    {
+        "output": "Amenities",
+        "outputQty": 1,
+        "input": "Wood",
+        "inputQty": 3
+    },
+    {
+        "output": "Amenities",
+        "outputQty": 1,
+        "input": "Glass",
+        "inputQty": 4
+    },
+    {
+        "output": "Amenities",
+        "outputQty": 1,
+        "input": "Pipes",
+        "inputQty": 4
+    },
+    {
+        "output": "Laboratory Suit",
+        "outputQty": 7,
+        "input": "Biopolyne",
+        "inputQty": 2
+    },
+    {
+        "output": "Laboratory Suit",
+        "outputQty": 7,
+        "input": "Color Compound",
+        "inputQty": 3
+    },
+    {
+        "output": "Laboratory Suit",
+        "outputQty": 7,
+        "input": "VR Headset",
+        "inputQty": 1
+    },
+    {
+        "output": "Spectra Modulator",
+        "outputQty": 8,
+        "input": "Platinum",
+        "inputQty": 1
+    },
+    {
+        "output": "Spectra Modulator",
+        "outputQty": 8,
+        "input": "Reinforced Glass",
+        "inputQty": 4
+    },
+    {
+        "output": "Spectra Modulator",
+        "outputQty": 8,
+        "input": "Carbon Nanotubes",
+        "inputQty": 1
+    },
+    {
+        "output": "Spectra Modulator",
+        "outputQty": 8,
+        "input": "Advanced Processing Unit",
+        "inputQty": 1
+    },
+    {
+        "output": "Advanced Circuit Board",
+        "outputQty": 2,
+        "input": "Neoplast Sheet",
+        "inputQty": 1
+    },
+    {
+        "output": "Advanced Circuit Board",
+        "outputQty": 2,
+        "input": "Chip",
+        "inputQty": 2
+    },
+    {
+        "output": "Advanced Circuit Board",
+        "outputQty": 2,
+        "input": "Copper Wire",
+        "inputQty": 6
+    },
+    {
+        "output": "Graphenium Wire",
+        "outputQty": 8,
+        "input": "Kryon",
+        "inputQty": 5
+    },
+    {
+        "output": "Graphenium Wire",
+        "outputQty": 8,
+        "input": "Graphenium",
+        "inputQty": 1
+    },
+    {
+        "output": "Molecular Fusion Kit",
+        "outputQty": 8,
+        "input": "Bioxene",
+        "inputQty": 3
+    },
+    {
+        "output": "Molecular Fusion Kit",
+        "outputQty": 8,
+        "input": "Consumer Electronics",
+        "inputQty": 2
+    },
+    {
+        "output": "Molecular Fusion Kit",
+        "outputQty": 8,
+        "input": "Battery",
+        "inputQty": 2
+    },
+    {
+        "output": "Molecular Fusion Kit",
+        "outputQty": 8,
+        "input": "Copper Wire",
+        "inputQty": 10
+    },
+    {
+        "output": "Molecular Fusion Kit",
+        "outputQty": 8,
+        "input": "Heat Shielding",
+        "inputQty": 1
+    },
+    {
+        "output": "Robot",
+        "outputQty": 3,
+        "input": "Aluminium",
+        "inputQty": 3
+    },
+    {
+        "output": "Robot",
+        "outputQty": 3,
+        "input": "Graphene",
+        "inputQty": 2
+    },
+    {
+        "output": "Robot",
+        "outputQty": 3,
+        "input": "Electric Motor",
+        "inputQty": 1
+    },
+    {
+        "output": "Robot",
+        "outputQty": 3,
+        "input": "Advanced Circuit Board",
+        "inputQty": 1
+    },
+    {
+        "output": "Radiation Shielding",
+        "outputQty": 1,
+        "input": "Aeridium",
+        "inputQty": 1
+    },
+    {
+        "output": "Radiation Shielding",
+        "outputQty": 1,
+        "input": "Kevlar",
+        "inputQty": 2
+    },
+    {
+        "output": "Radiation Shielding",
+        "outputQty": 1,
+        "input": "Aerogel",
+        "inputQty": 5
+    },
+    {
+        "output": "Life Support System",
+        "outputQty": 1,
+        "input": "Aluminium",
+        "inputQty": 1
+    },
+    {
+        "output": "Life Support System",
+        "outputQty": 1,
+        "input": "Aerogel",
+        "inputQty": 3
+    },
+    {
+        "output": "Life Support System",
+        "outputQty": 1,
+        "input": "Cooling System",
+        "inputQty": 1
+    },
+    {
+        "output": "Apex Research Data",
+        "outputQty": 1,
+        "input": "Bioxene",
+        "inputQty": 2
+    },
+    {
+        "output": "Apex Research Data",
+        "outputQty": 1,
+        "input": "Nanopolyne",
+        "inputQty": 6
+    },
+    {
+        "output": "Apex Research Data",
+        "outputQty": 1,
+        "input": "Titanium Carbide Drill",
+        "inputQty": 1
+    },
+    {
+        "output": "Apex Research Data",
+        "outputQty": 1,
+        "input": "VR Headset",
+        "inputQty": 1
+    },
+    {
+        "output": "Welding Kit",
+        "outputQty": 2,
+        "input": "Iron",
+        "inputQty": 1
+    },
+    {
+        "output": "Welding Kit",
+        "outputQty": 2,
+        "input": "Hydrogen",
+        "inputQty": 2
+    },
+    {
+        "output": "Welding Kit",
+        "outputQty": 2,
+        "input": "Oxygen",
+        "inputQty": 2
+    },
+    {
+        "output": "Hull Plate",
+        "outputQty": 1,
+        "input": "Aluminium",
+        "inputQty": 2
+    },
+    {
+        "output": "Hull Plate",
+        "outputQty": 1,
+        "input": "Truss",
+        "inputQty": 2
+    },
+    {
+        "output": "Hull Plate",
+        "outputQty": 1,
+        "input": "Welding Kit",
+        "inputQty": 1
+    },
+    {
+        "output": "Cargo Bay Segment",
+        "outputQty": 1,
+        "input": "Aluminium",
+        "inputQty": 2
+    },
+    {
+        "output": "Cargo Bay Segment",
+        "outputQty": 1,
+        "input": "Truss",
+        "inputQty": 4
+    },
+    {
+        "output": "Cargo Bay Segment",
+        "outputQty": 1,
+        "input": "Reinforced Glass",
+        "inputQty": 3
+    },
+    {
+        "output": "Truss",
+        "outputQty": 4,
+        "input": "Steel",
+        "inputQty": 1
+    },
+    {
+        "output": "Truss",
+        "outputQty": 4,
+        "input": "Welding Kit",
+        "inputQty": 1
+    },
+    {
+        "output": "Fuel Tank Segment",
+        "outputQty": 1,
+        "input": "Aluminium",
+        "inputQty": 2
+    },
+    {
+        "output": "Fuel Tank Segment",
+        "outputQty": 1,
+        "input": "Pressure Sealant Kit",
+        "inputQty": 1
+    },
+    {
+        "output": "Fuel Tank Segment",
+        "outputQty": 1,
+        "input": "Truss",
+        "inputQty": 3
+    },
+    {
+        "output": "Fuel Tank Segment",
+        "outputQty": 1,
+        "input": "Pump",
+        "inputQty": 1
+    },
+    {
+        "output": "Pump",
+        "outputQty": 2,
+        "input": "Glass",
+        "inputQty": 1
+    },
+    {
+        "output": "Pump",
+        "outputQty": 2,
+        "input": "Pipes",
+        "inputQty": 2
+    },
+    {
+        "output": "Pump",
+        "outputQty": 2,
+        "input": "Lubricant",
+        "inputQty": 5
+    },
+    {
+        "output": "Pump",
+        "outputQty": 2,
+        "input": "Electronic Circuit",
+        "inputQty": 1
+    },
+    {
+        "output": "Heat Shielding",
+        "outputQty": 1,
+        "input": "Titanium",
+        "inputQty": 1
+    },
+    {
+        "output": "Heat Shielding",
+        "outputQty": 1,
+        "input": "Neoplast",
+        "inputQty": 10
+    },
+    {
+        "output": "Heat Shielding",
+        "outputQty": 1,
+        "input": "Aerogel",
+        "inputQty": 5
+    },
+    {
+        "output": "Pressure Sealant Kit",
+        "outputQty": 1,
+        "input": "Insulation Panels",
+        "inputQty": 1
+    },
+    {
+        "output": "Pressure Sealant Kit",
+        "outputQty": 1,
+        "input": "Rubber",
+        "inputQty": 5
+    },
+    {
+        "output": "Pressure Sealant Kit",
+        "outputQty": 1,
+        "input": "Epoxy",
+        "inputQty": 2
+    },
+    {
+        "output": "Cooling System",
+        "outputQty": 3,
+        "input": "Copper",
+        "inputQty": 1
+    },
+    {
+        "output": "Cooling System",
+        "outputQty": 3,
+        "input": "Insulation Panels",
+        "inputQty": 1
+    },
+    {
+        "output": "Cooling System",
+        "outputQty": 3,
+        "input": "Coolant",
+        "inputQty": 15
+    },
+    {
+        "output": "Cooling System",
+        "outputQty": 3,
+        "input": "Pump",
+        "inputQty": 1
+    },
+    {
+        "output": "Sensor Array",
+        "outputQty": 1,
+        "input": "Platinum",
+        "inputQty": 1
+    },
+    {
+        "output": "Sensor Array",
+        "outputQty": 1,
+        "input": "Cooling System",
+        "inputQty": 1
+    },
+    {
+        "output": "Sensor Array",
+        "outputQty": 1,
+        "input": "Copper Wire",
+        "inputQty": 20
+    },
+    {
+        "output": "Sensor Array",
+        "outputQty": 1,
+        "input": "Advanced Circuit Board",
+        "inputQty": 1
+    },
+    {
+        "output": "Shuttle Bridge",
+        "outputQty": 1,
+        "input": "Reinforced Glass",
+        "inputQty": 20
+    },
+    {
+        "output": "Shuttle Bridge",
+        "outputQty": 1,
+        "input": "Life Support System",
+        "inputQty": 2
+    },
+    {
+        "output": "Shuttle Bridge",
+        "outputQty": 1,
+        "input": "Control Console",
+        "inputQty": 3
+    },
+    {
+        "output": "Shuttle Bridge",
+        "outputQty": 1,
+        "input": "Advanced Circuit Board",
+        "inputQty": 3
+    },
+    {
+        "output": "FTL Field Controller",
+        "outputQty": 1,
+        "input": "Aerogel",
+        "inputQty": 10
+    },
+    {
+        "output": "FTL Field Controller",
+        "outputQty": 1,
+        "input": "Control Console",
+        "inputQty": 1
+    },
+    {
+        "output": "FTL Field Controller",
+        "outputQty": 1,
+        "input": "Copper Wire",
+        "inputQty": 20
+    },
+    {
+        "output": "FTL Field Controller",
+        "outputQty": 1,
+        "input": "Advanced Processing Unit",
+        "inputQty": 1
+    },
+    {
+        "output": "Linear FTL Emitter",
+        "outputQty": 1,
+        "input": "Titanium",
+        "inputQty": 4
+    },
+    {
+        "output": "Linear FTL Emitter",
+        "outputQty": 1,
+        "input": "Cooling System",
+        "inputQty": 3
+    },
+    {
+        "output": "Linear FTL Emitter",
+        "outputQty": 1,
+        "input": "Control Console",
+        "inputQty": 1
+    },
+    {
+        "output": "Linear FTL Emitter",
+        "outputQty": 1,
+        "input": "Heat Shielding",
+        "inputQty": 1
+    },
+    {
+        "output": "Control Console",
+        "outputQty": 1,
+        "input": "Aluminium",
+        "inputQty": 1
+    },
+    {
+        "output": "Control Console",
+        "outputQty": 1,
+        "input": "Reinforced Glass",
+        "inputQty": 1
+    },
+    {
+        "output": "Control Console",
+        "outputQty": 1,
+        "input": "Advanced Circuit Board",
+        "inputQty": 1
+    },
+    {
+        "output": "VR Headset",
+        "outputQty": 3,
+        "input": "Reinforced Glass",
+        "inputQty": 2
+    },
+    {
+        "output": "VR Headset",
+        "outputQty": 3,
+        "input": "Nanopolyne",
+        "inputQty": 5
+    },
+    {
+        "output": "VR Headset",
+        "outputQty": 3,
+        "input": "Epoxy",
+        "inputQty": 4
+    },
+    {
+        "output": "VR Headset",
+        "outputQty": 3,
+        "input": "Advanced Processing Unit",
+        "inputQty": 1
+    },
+    {
+        "output": "Hydrogen Generator",
+        "outputQty": 1,
+        "input": "Steel",
+        "inputQty": 7
+    },
+    {
+        "output": "Hydrogen Generator",
+        "outputQty": 1,
+        "input": "Pressure Sealant Kit",
+        "inputQty": 3
+    },
+    {
+        "output": "Hydrogen Generator",
+        "outputQty": 1,
+        "input": "Cooling System",
+        "inputQty": 2
+    },
+    {
+        "output": "Hydrogen Generator",
+        "outputQty": 1,
+        "input": "Battery",
+        "inputQty": 5
+    },
+    {
+        "output": "Hydrogen Generator",
+        "outputQty": 1,
+        "input": "Advanced Circuit Board",
+        "inputQty": 2
+    },
+    {
+        "output": "Ship Interior Kit",
+        "outputQty": 1,
+        "input": "Pressure Sealant Kit",
+        "inputQty": 1
+    },
+    {
+        "output": "Ship Interior Kit",
+        "outputQty": 1,
+        "input": "Pipes",
+        "inputQty": 4
+    },
+    {
+        "output": "Ship Interior Kit",
+        "outputQty": 1,
+        "input": "Furniture",
+        "inputQty": 4
+    },
+    {
+        "output": "Ship Interior Kit",
+        "outputQty": 1,
+        "input": "Neoplast Sheet",
+        "inputQty": 4
+    },
+    {
+        "output": "Ship Interior Kit",
+        "outputQty": 1,
+        "input": "Consumer Electronics",
+        "inputQty": 2
+    },
+    {
+        "output": "Apex Structural Elements",
+        "outputQty": 1,
+        "input": "Tiridium Alloy",
+        "inputQty": 1
+    },
+    {
+        "output": "Apex Structural Elements",
+        "outputQty": 1,
+        "input": "Composite Truss",
+        "inputQty": 2
+    },
+    {
+        "output": "Apex Structural Elements",
+        "outputQty": 1,
+        "input": "Molecular Fusion Kit",
+        "inputQty": 1
+    },
+    {
+        "output": "Advanced Prefab Kit",
+        "outputQty": 1,
+        "input": "Aluminium",
+        "inputQty": 5
+    },
+    {
+        "output": "Advanced Prefab Kit",
+        "outputQty": 1,
+        "input": "Durablend",
+        "inputQty": 20
+    },
+    {
+        "output": "Advanced Prefab Kit",
+        "outputQty": 1,
+        "input": "Reinforced Glass",
+        "inputQty": 5
+    },
+    {
+        "output": "Advanced Construction Kit",
+        "outputQty": 1,
+        "input": "Neoplast Sheet",
+        "inputQty": 2
+    },
+    {
+        "output": "Advanced Construction Kit",
+        "outputQty": 1,
+        "input": "Construction Vehicle",
+        "inputQty": 1
+    },
+    {
+        "output": "Advanced Construction Kit",
+        "outputQty": 1,
+        "input": "Drone",
+        "inputQty": 1
+    },
+    {
+        "output": "Advanced Amenities",
+        "outputQty": 1,
+        "input": "Pipes",
+        "inputQty": 6
+    },
+    {
+        "output": "Advanced Amenities",
+        "outputQty": 1,
+        "input": "Furniture",
+        "inputQty": 4
+    },
+    {
+        "output": "Advanced Amenities",
+        "outputQty": 1,
+        "input": "Reinforced Glass",
+        "inputQty": 5
+    },
+    {
+        "output": "Advanced Amenities",
+        "outputQty": 1,
+        "input": "Neoplast",
+        "inputQty": 30
+    },
+    {
+        "output": "Advanced Amenities",
+        "outputQty": 1,
+        "input": "Consumer Electronics",
+        "inputQty": 3
+    },
+    {
+        "output": "Durablend",
+        "outputQty": 15,
+        "input": "Steel",
+        "inputQty": 1
+    },
+    {
+        "output": "Durablend",
+        "outputQty": 15,
+        "input": "Concrete",
+        "inputQty": 10
+    },
+    {
+        "output": "Durablend",
+        "outputQty": 15,
+        "input": "Neoplast",
+        "inputQty": 6
+    },
+    {
+        "output": "Durablend",
+        "outputQty": 15,
+        "input": "Epoxy",
+        "inputQty": 2
+    },
+    {
+        "output": "Insulation Panels",
+        "outputQty": 3,
+        "input": "Fabric",
+        "inputQty": 8
+    },
+    {
+        "output": "Insulation Panels",
+        "outputQty": 3,
+        "input": "Neoplast Sheet",
+        "inputQty": 1
+    },
+    {
+        "output": "Insulation Panels",
+        "outputQty": 3,
+        "input": "Epoxy",
+        "inputQty": 3
+    },
+    {
+        "output": "Neoplast Sheet",
+        "outputQty": 1,
+        "input": "Neoplast",
+        "inputQty": 5
+    },
+    {
+        "output": "Transistor",
+        "outputQty": 20,
+        "input": "Carbon",
+        "inputQty": 1
+    },
+    {
+        "output": "Transistor",
+        "outputQty": 20,
+        "input": "Silica",
+        "inputQty": 3
+    },
+    {
+        "output": "Transistor",
+        "outputQty": 20,
+        "input": "Copper Wire",
+        "inputQty": 4
+    },
+    {
+        "output": "Silicon Wafer",
+        "outputQty": 5,
+        "input": "Silica",
+        "inputQty": 3
+    },
+    {
+        "output": "Silicon Wafer",
+        "outputQty": 5,
+        "input": "Argon",
+        "inputQty": 2
+    },
+    {
+        "output": "Chip",
+        "outputQty": 3,
+        "input": "Neoplast",
+        "inputQty": 4
+    },
+    {
+        "output": "Chip",
+        "outputQty": 3,
+        "input": "Copper Wire",
+        "inputQty": 5
+    },
+    {
+        "output": "Chip",
+        "outputQty": 3,
+        "input": "Silicon Wafer",
+        "inputQty": 2
+    },
+    {
+        "output": "Construction Kit",
+        "outputQty": 1,
+        "input": "Polyethylene",
+        "inputQty": 22
+    },
+    {
+        "output": "Construction Kit",
+        "outputQty": 1,
+        "input": "Construction Tools",
+        "inputQty": 3
+    },
+    {
+        "output": "Advanced Research Data",
+        "outputQty": 1,
+        "input": "Durablend",
+        "inputQty": 7
+    },
+    {
+        "output": "Advanced Research Data",
+        "outputQty": 1,
+        "input": "Kevlar",
+        "inputQty": 3
+    },
+    {
+        "output": "Advanced Research Data",
+        "outputQty": 1,
+        "input": "Drill",
+        "inputQty": 1
+    },
+    {
+        "output": "Apex Research Data",
+        "outputQty": 4,
+        "input": "Mainframe",
+        "inputQty": 1
+    },
+    {
+        "output": "Apex Research Data",
+        "outputQty": 4,
+        "input": "Sensor Array",
+        "inputQty": 1
+    },
+    {
+        "output": "Apex Research Data",
+        "outputQty": 4,
+        "input": "Artificial Intelligence",
+        "inputQty": 1
+    },
+    {
+        "output": "Honeycaps",
+        "outputQty": 10,
+        "input": "Water",
+        "inputQty": 13
+    },
+    {
+        "output": "Sugar",
+        "outputQty": 10,
+        "input": "Honeycaps",
+        "inputQty": 5
+    },
+    {
+        "output": "Sugar",
+        "outputQty": 10,
+        "input": "Water",
+        "inputQty": 2
+    },
+    {
+        "output": "Pie",
+        "outputQty": 5,
+        "input": "Fruits",
+        "inputQty": 3
+    },
+    {
+        "output": "Pie",
+        "outputQty": 5,
+        "input": "Grain",
+        "inputQty": 5
+    },
+    {
+        "output": "Pie",
+        "outputQty": 5,
+        "input": "Milk",
+        "inputQty": 6
+    },
+    {
+        "output": "Pie",
+        "outputQty": 5,
+        "input": "Eggs",
+        "inputQty": 2
+    },
+    {
+        "output": "Pie",
+        "outputQty": 5,
+        "input": "Sugar",
+        "inputQty": 3
+    },
+    {
+        "output": "Chickens",
+        "outputQty": 4,
+        "input": "Grain",
+        "inputQty": 15
+    },
+    {
+        "output": "Chickens",
+        "outputQty": 4,
+        "input": "Water",
+        "inputQty": 4
+    },
+    {
+        "output": "Wood",
+        "outputQty": 35,
+        "input": "Water",
+        "inputQty": 18
+    },
+    {
+        "output": "Wood",
+        "outputQty": 35,
+        "input": "Fertilizer",
+        "inputQty": 8
+    },
+    {
+        "output": "Honeycaps",
+        "outputQty": 15,
+        "input": "Water",
+        "inputQty": 16
+    },
+    {
+        "output": "Honeycaps",
+        "outputQty": 15,
+        "input": "Fertilizer",
+        "inputQty": 5
+    },
+    {
+        "output": "Coffee Beans",
+        "outputQty": 15,
+        "input": "Water",
+        "inputQty": 11
+    },
+    {
+        "output": "Coffee Beans",
+        "outputQty": 15,
+        "input": "Fertilizer",
+        "inputQty": 5
+    },
+    {
+        "output": "Modern Prefab Kit",
+        "outputQty": 1,
+        "input": "Aluminium",
+        "inputQty": 2
+    },
+    {
+        "output": "Modern Prefab Kit",
+        "outputQty": 1,
+        "input": "Concrete",
+        "inputQty": 15
+    },
+    {
+        "output": "Modern Prefab Kit",
+        "outputQty": 1,
+        "input": "Glass",
+        "inputQty": 5
+    },
+    {
+        "output": "Structural Elements",
+        "outputQty": 1,
+        "input": "Truss",
+        "inputQty": 3
+    },
+    {
+        "output": "Structural Elements",
+        "outputQty": 1,
+        "input": "Color Compound",
+        "inputQty": 5
+    },
+    {
+        "output": "Structural Elements",
+        "outputQty": 1,
+        "input": "Welding Kit",
+        "inputQty": 2
+    },
+    {
+        "output": "Superconducting Coil",
+        "outputQty": 6,
+        "input": "Tiridium Alloy",
+        "inputQty": 1
+    },
+    {
+        "output": "Superconducting Coil",
+        "outputQty": 6,
+        "input": "Graphenium Wire",
+        "inputQty": 6
+    },
+    {
+        "output": "Fission Reactor",
+        "outputQty": 1,
+        "input": "Tiridium Alloy",
+        "inputQty": 5
+    },
+    {
+        "output": "Fission Reactor",
+        "outputQty": 1,
+        "input": "Cooling System",
+        "inputQty": 5
+    },
+    {
+        "output": "Fission Reactor",
+        "outputQty": 1,
+        "input": "Control Console",
+        "inputQty": 1
+    },
+    {
+        "output": "Fission Reactor",
+        "outputQty": 1,
+        "input": "Sensor Array",
+        "inputQty": 1
+    },
+    {
+        "output": "Fission Reactor",
+        "outputQty": 1,
+        "input": "Radiation Shielding",
+        "inputQty": 5
+    },
+    {
+        "output": "Quantum FTL Emitter",
+        "outputQty": 1,
+        "input": "Tiridium Alloy",
+        "inputQty": 1
+    },
+    {
+        "output": "Quantum FTL Emitter",
+        "outputQty": 1,
+        "input": "Cooling System",
+        "inputQty": 1
+    },
+    {
+        "output": "Quantum FTL Emitter",
+        "outputQty": 1,
+        "input": "FTL Field Controller",
+        "inputQty": 1
+    },
+    {
+        "output": "Quantum FTL Emitter",
+        "outputQty": 1,
+        "input": "Radiation Shielding",
+        "inputQty": 1
+    },
+    {
+        "output": "Titanium Ore",
+        "outputQty": 38,
+        "input": "Mining Vehicle",
+        "inputQty": 1
+    },
+    {
+        "output": "Titanium Ore",
+        "outputQty": 38,
+        "input": "Titanium Carbide Drill",
+        "inputQty": 2
+    },
+    {
+        "output": "Platinum Ore",
+        "outputQty": 35,
+        "input": "Mining Vehicle",
+        "inputQty": 1
+    },
+    {
+        "output": "Platinum Ore",
+        "outputQty": 35,
+        "input": "Titanium Carbide Drill",
+        "inputQty": 2
+    },
+    {
+        "output": "Ship Repair Kit",
+        "outputQty": 1,
+        "input": "Aluminium",
+        "inputQty": 1
+    },
+    {
+        "output": "Ship Repair Kit",
+        "outputQty": 1,
+        "input": "Truss",
+        "inputQty": 1
+    },
+    {
+        "output": "Ship Repair Kit",
+        "outputQty": 1,
+        "input": "Welding Kit",
+        "inputQty": 1
+    },
+    {
+        "output": "Aeridium Ore",
+        "outputQty": 35,
+        "input": "Mining Vehicle",
+        "inputQty": 1
+    },
+    {
+        "output": "Aeridium Ore",
+        "outputQty": 35,
+        "input": "Titanium Carbide Drill",
+        "inputQty": 2
+    },
+    {
+        "output": "Aeridium",
+        "outputQty": 2,
+        "input": "Aeridium Ore",
+        "inputQty": 2
+    },
+    {
+        "output": "Aeridium",
+        "outputQty": 2,
+        "input": "Argon",
+        "inputQty": 2
+    },
+    {
+        "output": "Aeridium",
+        "outputQty": 2,
+        "input": "Sulfuric Acid",
+        "inputQty": 5
+    },
+    {
+        "output": "Tiridium Alloy",
+        "outputQty": 1,
+        "input": "Titanium",
+        "inputQty": 1
+    },
+    {
+        "output": "Tiridium Alloy",
+        "outputQty": 1,
+        "input": "Aeridium",
+        "inputQty": 1
+    },
+    {
+        "output": "Tiridium Alloy",
+        "outputQty": 1,
+        "input": "Argon",
+        "inputQty": 2
+    },
+    {
+        "output": "Tiridium Alloy",
+        "outputQty": 1,
+        "input": "Graphene",
+        "inputQty": 1
+    },
+    {
+        "output": "Starglass Hull Plate",
+        "outputQty": 1,
+        "input": "Starglass",
+        "inputQty": 2
+    },
+    {
+        "output": "Starglass Hull Plate",
+        "outputQty": 1,
+        "input": "Nanoweave",
+        "inputQty": 10
+    },
+    {
+        "output": "Starglass Hull Plate",
+        "outputQty": 1,
+        "input": "Molecular Fusion Kit",
+        "inputQty": 2
+    },
+    {
+        "output": "Tiridium Hull Plate",
+        "outputQty": 1,
+        "input": "Tiridium Alloy",
+        "inputQty": 1
+    },
+    {
+        "output": "Tiridium Hull Plate",
+        "outputQty": 1,
+        "input": "Composite Truss",
+        "inputQty": 1
+    },
+    {
+        "output": "Tiridium Hull Plate",
+        "outputQty": 1,
+        "input": "Molecular Fusion Kit",
+        "inputQty": 1
+    },
+    {
+        "output": "Mainframe",
+        "outputQty": 1,
+        "input": "Aluminium",
+        "inputQty": 2
+    },
+    {
+        "output": "Mainframe",
+        "outputQty": 1,
+        "input": "Cooling System",
+        "inputQty": 1
+    },
+    {
+        "output": "Mainframe",
+        "outputQty": 1,
+        "input": "Advanced Circuit Board",
+        "inputQty": 1
+    },
+    {
+        "output": "Mainframe",
+        "outputQty": 1,
+        "input": "Advanced Processing Unit",
+        "inputQty": 2
+    },
+    {
+        "output": "Mainframe",
+        "outputQty": 1,
+        "input": "Operating System",
+        "inputQty": 1
+    },
+    {
+        "output": "AICore",
+        "outputQty": 1,
+        "input": "Field Cooling System",
+        "inputQty": 1
+    },
+    {
+        "output": "AICore",
+        "outputQty": 1,
+        "input": "Control Console",
+        "inputQty": 1
+    },
+    {
+        "output": "AICore",
+        "outputQty": 1,
+        "input": "Quantum Mainframe",
+        "inputQty": 1
+    },
+    {
+        "output": "AICore",
+        "outputQty": 1,
+        "input": "Artificial Intelligence",
+        "inputQty": 1
+    },
+    {
+        "output": "Composite Shielding",
+        "outputQty": 2,
+        "input": "Titanium",
+        "inputQty": 1
+    },
+    {
+        "output": "Composite Shielding",
+        "outputQty": 2,
+        "input": "Graphene",
+        "inputQty": 3
+    },
+    {
+        "output": "Composite Shielding",
+        "outputQty": 2,
+        "input": "Kevlar",
+        "inputQty": 2
+    },
+    {
+        "output": "Composite Shielding",
+        "outputQty": 2,
+        "input": "Aerogel",
+        "inputQty": 5
+    },
+    {
+        "output": "Hauler Bridge",
+        "outputQty": 1,
+        "input": "Reinforced Glass",
+        "inputQty": 5
+    },
+    {
+        "output": "Hauler Bridge",
+        "outputQty": 1,
+        "input": "Life Support System",
+        "inputQty": 2
+    },
+    {
+        "output": "Hauler Bridge",
+        "outputQty": 1,
+        "input": "VR Headset",
+        "inputQty": 4
+    },
+    {
+        "output": "Hauler Bridge",
+        "outputQty": 1,
+        "input": "Mainframe",
+        "inputQty": 2
+    },
+    {
+        "output": "Hauler Bridge",
+        "outputQty": 1,
+        "input": "Sensor Array",
+        "inputQty": 2
+    },
+    {
+        "output": "Hauler Bridge",
+        "outputQty": 1,
+        "input": "Artificial Intelligence",
+        "inputQty": 1
+    },
+    {
+        "output": "Nanopolyne",
+        "outputQty": 20,
+        "input": "Aeridium",
+        "inputQty": 1
+    },
+    {
+        "output": "Nanopolyne",
+        "outputQty": 20,
+        "input": "Argon",
+        "inputQty": 4
+    },
+    {
+        "output": "Nanopolyne",
+        "outputQty": 20,
+        "input": "Graphene",
+        "inputQty": 4
+    },
+    {
+        "output": "Nanoweave",
+        "outputQty": 8,
+        "input": "Carbon Nanotubes",
+        "inputQty": 1
+    },
+    {
+        "output": "Nanoweave",
+        "outputQty": 8,
+        "input": "Nanopolyne",
+        "inputQty": 5
+    },
+    {
+        "output": "Nanoweave",
+        "outputQty": 8,
+        "input": "Epoxy",
+        "inputQty": 5
+    },
+    {
+        "output": "Nanoweave Shielding",
+        "outputQty": 2,
+        "input": "Tiridium Alloy",
+        "inputQty": 1
+    },
+    {
+        "output": "Nanoweave Shielding",
+        "outputQty": 2,
+        "input": "Nanoweave",
+        "inputQty": 5
+    },
+    {
+        "output": "Nanoweave Shielding",
+        "outputQty": 2,
+        "input": "Aerogel",
+        "inputQty": 8
+    },
+    {
+        "output": "Drone",
+        "outputQty": 1,
+        "input": "Neoplast",
+        "inputQty": 8
+    },
+    {
+        "output": "Drone",
+        "outputQty": 1,
+        "input": "Electric Motor",
+        "inputQty": 1
+    },
+    {
+        "output": "Drone",
+        "outputQty": 1,
+        "input": "Electronic Circuit",
+        "inputQty": 1
+    },
+    {
+        "output": "Apex Prefab Kit",
+        "outputQty": 1,
+        "input": "Tiridium Alloy",
+        "inputQty": 1
+    },
+    {
+        "output": "Apex Prefab Kit",
+        "outputQty": 1,
+        "input": "Cohesilite",
+        "inputQty": 10
+    },
+    {
+        "output": "Apex Prefab Kit",
+        "outputQty": 1,
+        "input": "Epoxy",
+        "inputQty": 10
+    },
+    {
+        "output": "Cohesilite",
+        "outputQty": 20,
+        "input": "Tiridium Alloy",
+        "inputQty": 1
+    },
+    {
+        "output": "Cohesilite",
+        "outputQty": 20,
+        "input": "Concrete",
+        "inputQty": 20
+    },
+    {
+        "output": "Cohesilite",
+        "outputQty": 20,
+        "input": "Nanopolyne",
+        "inputQty": 5
+    },
+    {
+        "output": "Operating System",
+        "outputQty": 1,
+        "input": "Consumer Electronics",
+        "inputQty": 1
+    },
+    {
+        "output": "Artificial Intelligence",
+        "outputQty": 1,
+        "input": "Consumer Electronics",
+        "inputQty": 1
+    },
+    {
+        "output": "Artificial Intelligence",
+        "outputQty": 1,
+        "input": "AI Training Data",
+        "inputQty": 1
+    },
+    {
+        "output": "AI Training Data",
+        "outputQty": 5,
+        "input": "VR Headset",
+        "inputQty": 1
+    },
+    {
+        "output": "AI Training Data",
+        "outputQty": 5,
+        "input": "Mainframe",
+        "inputQty": 1
+    },
+    {
+        "output": "AI Training Data",
+        "outputQty": 5,
+        "input": "Advanced Research Data",
+        "inputQty": 1
+    },
+    {
+        "output": "Antimatter Reactor",
+        "outputQty": 1,
+        "input": "Starglass",
+        "inputQty": 20
+    },
+    {
+        "output": "Antimatter Reactor",
+        "outputQty": 1,
+        "input": "Antimatter Containment",
+        "inputQty": 10
+    },
+    {
+        "output": "Antimatter Reactor",
+        "outputQty": 1,
+        "input": "Graphenium Wire",
+        "inputQty": 5
+    },
+    {
+        "output": "Antimatter Reactor",
+        "outputQty": 1,
+        "input": "Quantum Mainframe",
+        "inputQty": 1
+    },
+    {
+        "output": "Lobster",
+        "outputQty": 5,
+        "input": "Herbs",
+        "inputQty": 5
+    },
+    {
+        "output": "Lobster",
+        "outputQty": 5,
+        "input": "Water",
+        "inputQty": 15
+    },
+    {
+        "output": "Lobster",
+        "outputQty": 5,
+        "input": "Bio-Nutrient Blend",
+        "inputQty": 5
+    },
+    {
+        "output": "Herbs",
+        "outputQty": 10,
+        "input": "Water",
+        "inputQty": 5
+    },
+    {
+        "output": "Herbs",
+        "outputQty": 10,
+        "input": "Fertilizer",
+        "inputQty": 5
+    },
+    {
+        "output": "Exotic Spices",
+        "outputQty": 5,
+        "input": "Water",
+        "inputQty": 16
+    },
+    {
+        "output": "Exotic Spices",
+        "outputQty": 5,
+        "input": "Bio-Nutrient Blend",
+        "inputQty": 5
+    },
+    {
+        "output": "Gourmet Rations",
+        "outputQty": 10,
+        "input": "Vegetables",
+        "inputQty": 4
+    },
+    {
+        "output": "Gourmet Rations",
+        "outputQty": 10,
+        "input": "Herbs",
+        "inputQty": 4
+    },
+    {
+        "output": "Gourmet Rations",
+        "outputQty": 10,
+        "input": "Exotic Spices",
+        "inputQty": 1
+    },
+    {
+        "output": "Gourmet Rations",
+        "outputQty": 10,
+        "input": "Lobster",
+        "inputQty": 1
+    },
+    {
+        "output": "Rejuvaline",
+        "outputQty": 3,
+        "input": "Herbs",
+        "inputQty": 2
+    },
+    {
+        "output": "Rejuvaline",
+        "outputQty": 3,
+        "input": "Lobster",
+        "inputQty": 1
+    },
+    {
+        "output": "Rejuvaline",
+        "outputQty": 3,
+        "input": "Bioxene",
+        "inputQty": 1
+    },
+    {
+        "output": "Vitaqua",
+        "outputQty": 20,
+        "input": "Honeycaps",
+        "inputQty": 2
+    },
+    {
+        "output": "Vitaqua",
+        "outputQty": 20,
+        "input": "Herbs",
+        "inputQty": 4
+    },
+    {
+        "output": "Vitaqua",
+        "outputQty": 20,
+        "input": "Water",
+        "inputQty": 10
+    },
+    {
+        "output": "Extra-dimensional FTL Emitter",
+        "outputQty": 2,
+        "input": "Starglass",
+        "inputQty": 5
+    },
+    {
+        "output": "Extra-dimensional FTL Emitter",
+        "outputQty": 2,
+        "input": "Field Cooling System",
+        "inputQty": 1
+    },
+    {
+        "output": "Extra-dimensional FTL Emitter",
+        "outputQty": 2,
+        "input": "FTL Field Controller",
+        "inputQty": 1
+    },
+    {
+        "output": "Extra-dimensional FTL Emitter",
+        "outputQty": 2,
+        "input": "Superconducting Coil",
+        "inputQty": 3
+    },
+    {
+        "output": "Industrial Machinery",
+        "outputQty": 1,
+        "input": "Steel",
+        "inputQty": 4
+    },
+    {
+        "output": "Industrial Machinery",
+        "outputQty": 1,
+        "input": "Rubber",
+        "inputQty": 30
+    },
+    {
+        "output": "Industrial Machinery",
+        "outputQty": 1,
+        "input": "Electric Motor",
+        "inputQty": 2
+    },
+    {
+        "output": "Industrial Machinery",
+        "outputQty": 1,
+        "input": "Control Console",
+        "inputQty": 1
+    },
+    {
+        "output": "Biopolyne",
+        "outputQty": 5,
+        "input": "Bioxene",
+        "inputQty": 2
+    },
+    {
+        "output": "Biopolyne",
+        "outputQty": 5,
+        "input": "Kryon",
+        "inputQty": 1
+    },
+    {
+        "output": "Biopolyne",
+        "outputQty": 5,
+        "input": "Nanoweave",
+        "inputQty": 3
+    },
+    {
+        "output": "Nanites",
+        "outputQty": 10,
+        "input": "Starglass",
+        "inputQty": 1
+    },
+    {
+        "output": "Nanites",
+        "outputQty": 10,
+        "input": "Battery",
+        "inputQty": 1
+    },
+    {
+        "output": "Nanites",
+        "outputQty": 10,
+        "input": "Advanced Processing Unit",
+        "inputQty": 1
+    },
+    {
+        "output": "Quantum Research Data",
+        "outputQty": 5,
+        "input": "Quadranium",
+        "inputQty": 5
+    },
+    {
+        "output": "Quantum Research Data",
+        "outputQty": 5,
+        "input": "Superconducting Coil",
+        "inputQty": 10
+    },
+    {
+        "output": "Quantum Research Data",
+        "outputQty": 5,
+        "input": "AICore",
+        "inputQty": 1
+    },
+    {
+        "output": "Filtration System",
+        "outputQty": 2,
+        "input": "Aeridium",
+        "inputQty": 1
+    },
+    {
+        "output": "Filtration System",
+        "outputQty": 2,
+        "input": "Carbon Nanotubes",
+        "inputQty": 1
+    },
+    {
+        "output": "Filtration System",
+        "outputQty": 2,
+        "input": "Pump",
+        "inputQty": 1
+    },
+    {
+        "output": "Freighter Bridge",
+        "outputQty": 1,
+        "input": "Biopolyne",
+        "inputQty": 15
+    },
+    {
+        "output": "Freighter Bridge",
+        "outputQty": 1,
+        "input": "Life Support System",
+        "inputQty": 4
+    },
+    {
+        "output": "Freighter Bridge",
+        "outputQty": 1,
+        "input": "Sensor Array",
+        "inputQty": 3
+    },
+    {
+        "output": "Freighter Bridge",
+        "outputQty": 1,
+        "input": "AICore",
+        "inputQty": 1
+    },
+    {
+        "output": "Freighter Bridge",
+        "outputQty": 1,
+        "input": "Neural Interface",
+        "inputQty": 2
+    },
+    {
+        "output": "Ship Repair Kit",
+        "outputQty": 70,
+        "input": "Ship Interior Kit",
+        "inputQty": 2
+    },
+    {
+        "output": "Ship Repair Kit",
+        "outputQty": 70,
+        "input": "Hydrogen Generator",
+        "inputQty": 1
+    },
+    {
+        "output": "Ship Repair Kit",
+        "outputQty": 70,
+        "input": "Shuttle Bridge",
+        "inputQty": 1
+    },
+    {
+        "output": "Ship Repair Kit",
+        "outputQty": 70,
+        "input": "Linear FTL Emitter",
+        "inputQty": 1
+    },
+    {
+        "output": "Neural Interface",
+        "outputQty": 2,
+        "input": "Biopolyne",
+        "inputQty": 3
+    },
+    {
+        "output": "Neural Interface",
+        "outputQty": 2,
+        "input": "Advanced Processing Unit",
+        "inputQty": 2
+    },
+    {
+        "output": "Neural Interface",
+        "outputQty": 2,
+        "input": "Graphenium Wire",
+        "inputQty": 5
+    },
+    {
+        "output": "Starlifter Structural Elements",
+        "outputQty": 1,
+        "input": "Pipes",
+        "inputQty": 5
+    },
+    {
+        "output": "Starlifter Structural Elements",
+        "outputQty": 1,
+        "input": "Starglass",
+        "inputQty": 5
+    },
+    {
+        "output": "Starlifter Structural Elements",
+        "outputQty": 1,
+        "input": "Biopolyne",
+        "inputQty": 2
+    },
+    {
+        "output": "Starlifter Structural Elements",
+        "outputQty": 1,
+        "input": "Molecular Fusion Kit",
+        "inputQty": 1
+    },
+    {
+        "output": "Starlifter Structural Elements",
+        "outputQty": 1,
+        "input": "Graphenium Wire",
+        "inputQty": 5
+    },
+    {
+        "output": "Eggs",
+        "outputQty": 10,
+        "input": "Grain",
+        "inputQty": 5
+    },
+    {
+        "output": "Eggs",
+        "outputQty": 10,
+        "input": "Chickens",
+        "inputQty": 2
+    },
+    {
+        "output": "Starglass",
+        "outputQty": 2,
+        "input": "Kryon",
+        "inputQty": 2
+    },
+    {
+        "output": "Starglass",
+        "outputQty": 2,
+        "input": "Carbon Nanotubes",
+        "inputQty": 2
+    },
+    {
+        "output": "Starglass",
+        "outputQty": 2,
+        "input": "Quadranium",
+        "inputQty": 1
+    },
+    {
+        "output": "Starglass",
+        "outputQty": 2,
+        "input": "Aerogel",
+        "inputQty": 3
+    },
+    {
+        "output": "Graphenium",
+        "outputQty": 2,
+        "input": "Lithium",
+        "inputQty": 2
+    },
+    {
+        "output": "Graphenium",
+        "outputQty": 2,
+        "input": "Bioxene",
+        "inputQty": 2
+    },
+    {
+        "output": "Graphenium",
+        "outputQty": 2,
+        "input": "Graphene",
+        "inputQty": 3
+    },
+    {
+        "output": "Graphenium",
+        "outputQty": 2,
+        "input": "Quadranium",
+        "inputQty": 1
+    },
+    {
+        "output": "Quantum Research Data",
+        "outputQty": 2,
+        "input": "Bioxene",
+        "inputQty": 10
+    },
+    {
+        "output": "Quantum Research Data",
+        "outputQty": 2,
+        "input": "Biopolyne",
+        "inputQty": 5
+    },
+    {
+        "output": "Quantum Research Data",
+        "outputQty": 2,
+        "input": "Quantum Mainframe",
+        "inputQty": 1
+    },
+    {
+        "output": "Quantum Mainframe",
+        "outputQty": 1,
+        "input": "Nanoweave Shielding",
+        "inputQty": 1
+    },
+    {
+        "output": "Quantum Mainframe",
+        "outputQty": 1,
+        "input": "Field Cooling System",
+        "inputQty": 1
+    },
+    {
+        "output": "Quantum Mainframe",
+        "outputQty": 1,
+        "input": "Graphenium Wire",
+        "inputQty": 5
+    },
+    {
+        "output": "Quantum Mainframe",
+        "outputQty": 1,
+        "input": "Operating System",
+        "inputQty": 1
+    },
+    {
+        "output": "Field Cooling System",
+        "outputQty": 2,
+        "input": "Platinum",
+        "inputQty": 1
+    },
+    {
+        "output": "Field Cooling System",
+        "outputQty": 2,
+        "input": "Tiridium Alloy",
+        "inputQty": 1
+    },
+    {
+        "output": "Field Cooling System",
+        "outputQty": 2,
+        "input": "Advanced Processing Unit",
+        "inputQty": 2
+    },
+    {
+        "output": "Field Cooling System",
+        "outputQty": 2,
+        "input": "Superconducting Coil",
+        "inputQty": 3
+    },
+    {
+        "output": "Bio-Nutrient Blend",
+        "outputQty": 25,
+        "input": "Aeridium Ore",
+        "inputQty": 1
+    },
+    {
+        "output": "Bio-Nutrient Blend",
+        "outputQty": 25,
+        "input": "Bioxene",
+        "inputQty": 2
+    },
+    {
+        "output": "Bio-Nutrient Blend",
+        "outputQty": 25,
+        "input": "Fertilizer",
+        "inputQty": 25
+    },
+    {
+        "output": "Advanced Processing Unit",
+        "outputQty": 3,
+        "input": "Platinum",
+        "inputQty": 1
+    },
+    {
+        "output": "Advanced Processing Unit",
+        "outputQty": 3,
+        "input": "Graphene",
+        "inputQty": 3
+    },
+    {
+        "output": "Advanced Processing Unit",
+        "outputQty": 3,
+        "input": "Nanopolyne",
+        "inputQty": 4
+    },
+    {
+        "output": "Advanced Processing Unit",
+        "outputQty": 3,
+        "input": "Silicon Wafer",
+        "inputQty": 4
+    },
+    {
+        "output": "Furniture",
+        "outputQty": 3,
+        "input": "Cotton",
+        "inputQty": 2
+    },
+    {
+        "output": "Furniture",
+        "outputQty": 3,
+        "input": "Leather",
+        "inputQty": 2
+    },
+    {
+        "output": "Furniture",
+        "outputQty": 3,
+        "input": "Wood",
+        "inputQty": 2
+    },
+    {
+        "output": "Ship Repair Kit",
+        "outputQty": 185,
+        "input": "Ship Interior Kit",
+        "inputQty": 3
+    },
+    {
+        "output": "Ship Repair Kit",
+        "outputQty": 185,
+        "input": "Fission Reactor",
+        "inputQty": 1
+    },
+    {
+        "output": "Ship Repair Kit",
+        "outputQty": 185,
+        "input": "Hauler Bridge",
+        "inputQty": 1
+    },
+    {
+        "output": "Ship Repair Kit",
+        "outputQty": 185,
+        "input": "Quantum FTL Emitter",
+        "inputQty": 1
+    },
+    {
+        "output": "Iron",
+        "outputQty": 3,
+        "input": "Iron Ore",
+        "inputQty": 4
+    },
+    {
+        "output": "Iron",
+        "outputQty": 3,
+        "input": "Hydrogen",
+        "inputQty": 2
+    },
+    {
+        "output": "Iron",
+        "outputQty": 3,
+        "input": "Flux",
+        "inputQty": 2
+    },
+    {
+        "output": "Tools",
+        "outputQty": 230,
+        "input": "Tiridium Alloy",
+        "inputQty": 1
+    },
+    {
+        "output": "Tools",
+        "outputQty": 230,
+        "input": "Nanopolyne",
+        "inputQty": 9
+    }
+]
