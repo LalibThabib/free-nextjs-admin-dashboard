@@ -4,6 +4,12 @@ import React from "react";
 
 const BASE_PATH = process.env.NODE_ENV === "production" ? "/free-nextjs-admin-dashboard" : "";
 const SPRITE_URL = `${BASE_PATH}/images/assets/sprite-BAyyILFt.svg`;
+const ICON_OVERRIDES: Record<string, string> = {
+  "Copper": "CopperBar",
+  "Hydrogen Fuel": "HydrogenFuelCell",
+  // add more as you find them
+};
+
 
 
 function toSymbolId(materialName: string) {
@@ -25,7 +31,7 @@ export function MaterialLabel({
   className?: string;
   showText?: boolean;
 }) {
-  const symbolId = toSymbolId(name);
+ const symbolId = ICON_OVERRIDES[name] ?? toSymbolId(name);
 
   if (!symbolId) {
     return <span className={className}>{showText ? name : null}</span>;
@@ -34,6 +40,7 @@ export function MaterialLabel({
   return (
     <span className={`inline-flex items-center gap-2 ${className}`}>
       <svg width={size} height={size} className="shrink-0" aria-hidden="true" focusable="false">
+        
         <use href={`${SPRITE_URL}#${symbolId}`} xlinkHref={`${SPRITE_URL}#${symbolId}`} />
       </svg>
       {showText ? <span>{name}</span> : null}
