@@ -91,7 +91,8 @@ export default function BadgePage() {
           </div>
           <div className="p-6 border-t border-gray-100 dark:border-gray-800 xl:p-10">
             <div className="flex flex-wrap gap-4 sm:items-center sm:justify-center">
-              <Badge variant="light" color="primary" 
+              <Badge variant="light" color="primary">
+              </Badge>
                 Primary
               </Badge>
               <Badge variant="light" color="success">
@@ -162,7 +163,8 @@ export default function BadgePage() {
           </div>
           <div className="p-6 border-t border-gray-100 dark:border-gray-800 xl:p-10">
             <div className="flex flex-wrap gap-4 sm:items-center sm:justify-center">
-              <Badge variant="light" color="primary"
+              <Badge variant="light" color="primary">
+              </Badge>
                 Primary
               </Badge>
               <Badge variant="light" color="success">
@@ -195,7 +197,8 @@ export default function BadgePage() {
           </div>
           <div className="p-6 border-t border-gray-100 dark:border-gray-800 xl:p-10">
             <div className="flex flex-wrap gap-4 sm:items-center sm:justify-center">
-              <Badge variant="solid" color="primary" 
+              <Badge variant="solid" color="primary">
+              </Badge>
               </Badge>
               <Badge variant="solid" color="success">
                 Success
