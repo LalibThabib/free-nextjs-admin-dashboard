@@ -8,7 +8,7 @@ function AdminShell({ children }: { children: React.ReactNode }) {
   const { rightContent } = useHeaderSlot();
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#222222] text-[#e2e2e2] [background-image:url('/images/patterns/bg-pattern.svg')] [background-repeat:repeat] [background-size:400px_400px]">
       <AppHeader
         leftContent={<div className="text-sm font-semibold">Galactic Contracts</div>}
         rightContent={rightContent}

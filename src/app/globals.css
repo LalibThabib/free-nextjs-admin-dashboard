@@ -755,6 +755,10 @@ span.flatpickr-weekday,
 html, body {
   background: #222222 !important;
   color: #e2e2e2 !important;
+  background-image: url("/images/patterns/bg-pattern.svg");
+background-repeat: repeat;
+background-size: 260px 260px;
+
 }
 
 table {
