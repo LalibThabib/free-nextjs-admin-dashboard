@@ -15,14 +15,15 @@ function AdminShell({ children }: { children: React.ReactNode }) {
       <AppHeader
         leftContent={
   <div className="mx-auto w-full max-w-(--breakpoint-2xl) px-4 md:px-6">
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-3 pl-15">
       <img
   src={`${BASE_PATH}/images/logo/app-logo.svg`}
   alt="Galactic Contracts"
-  className="h-6 w-6"
+  className="h-7 w-7"
 />
 
-      <div className="text-base font-semibold">Galactic Contracts</div>
+      <div className="text-xl font-semibold">Galactic Contracts</div>
+
     </div>
   </div>
 }
