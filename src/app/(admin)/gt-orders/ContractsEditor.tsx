@@ -474,9 +474,9 @@ return (
   </div>
 
   <div className="overflow-x-auto">
-    <table className="w-full text-sm">
+    <table className="w-full text-sm bg-[#222222] text-[#e2e2e2]">
       <thead>
-        <tr className="border-b">
+        <tr className="border-b bg-[#444444]">
           <th className="py-2 text-left">Product</th>
           <th className="py-2 text-left">Destination</th>
           <th className="py-2 text-left">Client</th>
@@ -647,39 +647,39 @@ const isEditing = editingId === rowId;
   )}
 </td>
 
-
       <td className="py-2 text-right">
-        {isEditing && c ? (
-          <div className="flex items-center justify-end gap-2">
-            <input
-  type="number"
-  className="w-28 rounded border px-2 py-1 text-right"
-  value={Number(editDraft?.unitsPerDay || 0)}
-  onChange={(e) =>
-    setEditDraft((d) =>
-      d ? { ...d, unitsPerDay: Number(e.target.value || 0) } : d
-    )
-  }
-/>
-
-            <span className="text-xs opacity-70">Units/day</span>
-          </div>
-        ) : (
-          `${r.availAtDestination}/${r.unitsPerDay}`
-        )}
-      </td>
-
-      <td className="py-2 text-right">{r.missing}</td>
-
-<td className="py-2 text-right">
-  {fmtMoney(
+  {isEditing && c ? (
+    <div className="flex items-center justify-end gap-2">
+      <input
+        type="number"
+        className="w-28 rounded border px-2 py-1 text-right"
+        value={Number(editDraft?.unitsPerDay || 0)}
+        onChange={(e) =>
+          setEditDraft((d) =>
+            d ? { ...d, unitsPerDay: Number(e.target.value || 0) } : d
+          )
+        }
+      />
+      <span className="text-xs opacity-70">Units/day</span>
+    </div>
+  ) : (
     (() => {
-      const px = priceMap.get(r.product);
-      const unit = px?.avg ?? px?.current ?? null;
-      return unit === null ? null : r.unitsPerDay * unit;
+      const available = r.availAtDestination;
+      const needed = r.unitsPerDay;
+      const ratio = needed > 0 ? available / needed : 1;
+
+      const cls =
+        ratio < 0.3
+          ? "text-[#e74d3d]"
+          : ratio < 1
+          ? "text-[#d06c1a]"
+          : "text-[#00bc8c]";
+
+      return <span className={cls}>{available}/{needed}</span>;
     })()
   )}
 </td>
+
 
       <td className="py-2 text-right">
         {isEditing && c ? (
@@ -755,7 +755,7 @@ const isEditing = editingId === rowId;
   </div>
 </div>
 
-<div className="mt-6 rounded-lg border p-4 bg-white">
+<div className="mt-6 rounded-lg border border-[#444444] bg-[#303030] p-4 text-[#e2e2e2]">
   <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
     <div className="font-semibold">Actions</div>
 
@@ -871,7 +871,7 @@ const isEditing = editingId === rowId;
 {showProduction && (
  <div className="py-4">
 
-<div className="mt-6 rounded-lg border p-4">
+<div className="mt-6 rounded-lg border border-[#444444] bg-[#303030] p-4 text-[#e2e2e2]">
   <div className="font-semibold mb-2">Production needed</div>
 
   {productionNeeded.length === 0 ? (
@@ -940,7 +940,7 @@ const isEditing = editingId === rowId;
 
 {showBuy && (
 <div className="py-4">
-<div className="mt-6 rounded-lg border p-4">
+<div className="mt-6 rounded-lg border border-[#444444] bg-[#303030] p-4 text-[#e2e2e2]">
   <div className="font-semibold mb-2">
   Buy needed
   {priceMap.size === 0 ? (

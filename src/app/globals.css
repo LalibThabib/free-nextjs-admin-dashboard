@@ -750,3 +750,22 @@ span.flatpickr-weekday,
   opacity: 0.8;
   cursor: grabbing; /* Changes the cursor to indicate dragging */
 }
+
+/* GalacticContractsAPP palette */
+html, body {
+  background: #222222 !important;
+  color: #e2e2e2 !important;
+}
+
+table {
+  background: #222222 !important;
+  color: #e2e2e2 !important;
+}
+
+thead tr {
+  background: #444444 !important;
+}
+
+th, td {
+  border-color: #444444 !important;
+}
