@@ -458,7 +458,7 @@ return (
 
 
 
-<div className="rounded-xl border border-[#444444] bg-[##303030] p-4 text-[#e2e2e2]">
+<div className="rounded-xl border border-[#444444] bg-[#444444] p-4 text-[#e2e2e2]">
   <div className="mb-3 flex items-center justify-between">
     <div className="font-semibold">Contracts</div>
 
@@ -541,6 +541,7 @@ return (
               </div>
             </td>
 
+            <td className="py-2 text-right">—</td>
             <td className="py-2 text-right">—</td>
 
             <td className="py-2 text-right">
@@ -679,6 +680,19 @@ const isEditing = editingId === rowId;
     })()
   )}
 </td>
+
+<td className="py-2 text-right">{r.missing}</td>
+
+<td className="py-2 text-right">
+  {fmtMoney(
+    (() => {
+      const px = priceMap.get(r.product);
+      const unit = px?.avg ?? px?.current ?? null;
+      return unit === null ? null : r.unitsPerDay * unit;
+    })()
+  )}
+</td>
+
 
 
       <td className="py-2 text-right">
