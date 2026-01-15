@@ -2,7 +2,9 @@
 
 import React from "react";
 
-const SPRITE_URL = "/images/assets/sprite-BAyyILFt.svg";
+const BASE_PATH = process.env.NODE_ENV === "production" ? "/free-nextjs-admin-dashboard" : "";
+const SPRITE_URL = `${BASE_PATH}/images/assets/sprite-BAyyILFt.svg`;
+
 
 function toSymbolId(materialName: string) {
   // Keep original casing (important for acronyms: "AI Core" -> "AICore")
