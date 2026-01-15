@@ -1,1 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 424.7 493.5"><linearGradient id="a" x1="-94" x2="337" y1="-247" y2="463" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#e6e7e8"/><stop offset="1" stop-color="#94a4a5"/></linearGradient><path fill="url(#a)" d="M424.7 122.6v270.2L250.4 493.5V363.6l21 65.4 112.4-59.8v-223l-171.4-99-171.5 99v223L153.3 429l21-65.4v129.9L0 392.8V122.6L212.4 0Z"/><linearGradient id="b" x1="140" x2="553" y1="200" y2="531" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#7f8b8c"/><stop offset="1" stop-color="#414042"/></linearGradient><path fill="url(#b)" d="M212.4 26.8 401.5 136v243.4l-123 71.2-7.1-21.6 107.9-62.4V148.8L212.4 52.4l-167 96.4v217.8L153.3 429l-7 21.6-123.1-71.2V136Z"/><linearGradient id="c" x1="212" x2="212" y1="509" y2="315" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#28b9f8"/><stop offset=".6" stop-color="#28b9f8"/><stop offset=".7" stop-color="#1b97e6"/><stop offset=".8" stop-color="#127fd9"/><stop offset=".9" stop-color="#0c71d2"/><stop offset="1" stop-color="#0a6ccf"/></linearGradient><path fill="url(#c)" d="m231.7 358.3-19.3 135.2L193 358.3l19.4-30.5z"/><path fill="#28b9f8" d="M282.2 280.4c6.1-140-69.8-178-69.8-178s-75.8 38-69.8 178l-30.3 33.5 15.5 51.8 84.6-59.8 84.6 59.8 15.5-51.8-30.3-33.5zm-68-50.4a28.1 28.1 0 1 1 0-56.2 28.1 28.1 0 0 1 0 56.2z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 424.7 493.5">
+  <linearGradient id="a" x1="-94" x2="337" y1="-247" y2="463" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#e6e7e8"/>
+    <stop offset="1" stop-color="#94a4a5"/>
+  </linearGradient>
+  <path fill="url(#a)" d="M424.7 122.6v270.2L250.4 493.5V363.6l21 65.4 112.4-59.8v-223l-171.4-99-171.5 99v223L153.3 429l21-65.4v129.9L0 392.8V122.6L212.4 0Z"/>
+
+  <linearGradient id="b" x1="140" x2="553" y1="200" y2="531" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#7f8b8c"/>
+    <stop offset="1" stop-color="#414042"/>
+  </linearGradient>
+  <path fill="url(#b)" d="M212.4 26.8 401.5 136v243.4l-123 71.2-7.1-21.6 107.9-62.4V148.8L212.4 52.4l-167 96.4v217.8L153.3 429l-7 21.6-123.1-71.2V136Z"/>
+
+  <!-- Contract / document icon (replaces rocket) -->
+  <g transform="translate(212 220) scale(1.2) translate(-212 -220)">
+    <!-- Page body with folded corner -->
+    <path fill="#28b9f8" d="M152 120H242L272 150V320H152Z"/>
+    <!-- Fold -->
+    <path fill="#1b97e6" d="M242 120V150H272Z"/>
+
+    <!-- Text lines -->
+    <rect x="168" y="175" width="88" height="10" rx="5" fill="#0a6ccf"/>
+    <rect x="168" y="200" width="88" height="10" rx="5" fill="#0a6ccf"/>
+    <rect x="168" y="225" width="70" height="10" rx="5" fill="#0a6ccf"/>
+
+    <!-- Signature area -->
+    <rect x="168" y="270" width="88" height="8" rx="4" fill="#0a6ccf" opacity="0.65"/>
+  </g>
+</svg>

@@ -65,11 +65,12 @@ return (
         <div
           className={`${
             isApplicationMenuOpen ? "flex" : "hidden"
-          } items-center justify-between w-full gap-4 px-5 py-4 lg:flex shadow-theme-md lg:justify-end lg:px-0 lg:shadow-none`}
+          } items-center justify-between w-full gap-4 px-5 py-4 lg:flex shadow-theme-md lg:justify-end lg:px-22 lg:shadow-none`}
         >
           <div className="mr-3 hidden lg:flex items-center gap-3">
-          {rightContent}
-           </div>
+  {rightContent}
+</div>
+
 
         
           {/* <!-- User Area --> */}
