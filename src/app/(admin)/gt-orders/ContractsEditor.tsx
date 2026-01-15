@@ -18,6 +18,7 @@ import { useHeaderSlot } from "@/context/HeaderSlotContext";
 import { MaterialLabel } from "@/components/common/MaterialLabel";
 import { loadCompanyDirectory } from "./lib/gtApi";
 import Link from "next/link";
+import React from "react";
 
 
 
@@ -156,6 +157,19 @@ const [lastRefreshedAt, setLastRefreshedAt] = useState<string>("");
 const [priceMap, setPriceMap] = useState<Map<string, { current: number | null; avg: number | null }>>(
   () => new Map()
 );
+
+const materialByName = React.useMemo(() => {
+  // Uses the same cache you already write: localStorage.setItem("gt_materials_v1", JSON.stringify(mats))
+  if (typeof window === "undefined") return new Map<string, any>();
+
+  try {
+    const raw = localStorage.getItem("gt_materials_v1");
+    const list = raw ? (JSON.parse(raw) as any[]) : [];
+    return new Map(list.map((m: any) => [m.name, m]));
+  } catch {
+    return new Map<string, any>();
+  }
+}, []);
 
 const contractByKey = (product: string, destination: string) =>
   contracts.find(
@@ -751,18 +765,21 @@ const isEditing = editingId === rowId;
         <table className="w-full text-sm">
           <colgroup>
   <col style={{ width: "11%" }} />
+  <col style={{ width: "9%" }} />
+  <col style={{ width: "10%" }} />
+  <col style={{ width: "15%" }} />
   <col style={{ width: "11%" }} />
   <col style={{ width: "11%" }} />
   <col style={{ width: "11%" }} />
-  <col style={{ width: "11%" }} />
-  <col style={{ width: "11%" }} />
-  <col style={{ width: "34%" }} />
+  <col style={{ width: "22%" }} />
 </colgroup>
+
 
 <thead>
   <tr className="border-b">
     <th className="py-2 text-left">Material</th>
     <th className="py-2 text-left">Units</th>
+    <th className="py-2 text-left">Weight</th>
     <th className="py-2 text-left">Location</th>
 
     <th className="py-2"></th>
@@ -778,6 +795,14 @@ const isEditing = editingId === rowId;
     <tr key={`${r.material}|${r.from}|${r.to}|${idx}`} className="border-b">
       <td className="py-2 text-left"><MaterialLabel name={r.material} /></td>
       <td className="py-2 text-left">{r.units}</td>
+      <td className="py-2 text-left">
+      {(() => {
+    const w = materialByName.get(r.material)?.weight;
+    return w == null ? "—" : `${(r.units * w).toFixed(2)} kg`;
+        })()}
+      </td>
+
+      
       <td className="py-2 text-left">{r.from} → {r.to}</td>
 
       <td className="py-2"></td>
@@ -957,6 +982,7 @@ const isEditing = editingId === rowId;
     <option key={m} value={m} />
   ))}
 </datalist>
+
 <datalist id="locations">
   {locations.map((l) => (
     <option key={l} value={l} />
