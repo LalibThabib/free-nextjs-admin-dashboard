@@ -164,7 +164,7 @@ const [weightByName, setWeightByName] = useState<Map<string, number>>(new Map())
 useEffect(() => {
   if (typeof window === "undefined") return;
 
-  // load cached weights first (if any)
+  // 1) load cached weights first (if any)
   try {
     const raw = localStorage.getItem(LS_MAT_WEIGHTS);
     if (raw) setWeightByName(new Map(JSON.parse(raw)));
@@ -172,19 +172,14 @@ useEffect(() => {
     // ignore
   }
 
-  if (!apiKey?.trim()) return;
-
-  // refresh weights from API (best-effort)
-  fetch("https://api.g2.galactictycoons.com/public/exchange/mat-details", {
-    headers: { Authorization: `Bearer ${apiKey}` },
-  })
+  // 2) refresh from static game data (no API key needed)
+  fetch("https://api.g2.galactictycoons.com/gamedata.json")
     .then((r) => r.json())
     .then((data) => {
       const m = new Map<string, number>();
-      for (const mat of data?.materials || []) {
-        const name = String(mat?.matName ?? mat?.name ?? "").trim();
-        const rawW = mat?.weight ?? mat?.mass ?? mat?.w ?? mat?.unitWeight;
-        const w = typeof rawW === "string" ? parseFloat(rawW) : Number(rawW);
+      for (const mat of data?.materials ?? []) {
+        const name = String(mat?.name ?? mat?.sName ?? "").trim();
+        const w = Number(mat?.weight); // tonnes per unit
         if (name && Number.isFinite(w)) m.set(name, w);
       }
       if (m.size) {
@@ -193,7 +188,8 @@ useEffect(() => {
       }
     })
     .catch(() => {});
-}, [apiKey]);
+}, []);
+
 
 const materialByName = React.useMemo(() => {
   // Uses the same cache you already write: localStorage.setItem("gt_materials_v1", JSON.stringify(mats))
