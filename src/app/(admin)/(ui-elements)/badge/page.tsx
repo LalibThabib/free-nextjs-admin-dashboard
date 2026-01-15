@@ -94,22 +94,26 @@ export default function BadgePage() {
               <Badge variant="light" color="primary" 
                 Primary
               </Badge>
-              <Badge variant="light" color="success" 
+              <Badge variant="light" color="success">
+              </Badge> 
                 Success
               </Badge>{" "}
-              <Badge variant="light" color="error" 
+              <Badge variant="light" color="error">
+              </Badge> 
                 Error
               </Badge>{" "}
-              <Badge variant="light" color="warning" 
+              <Badge variant="light" color="warning">
+              </Badge> 
                 Warning
               </Badge>{" "}
-              <Badge variant="light" color="info" 
+              <Badge variant="light" color="info">
+              </Badge> 
                 Info
               </Badge>
-              <Badge variant="light" color="light" 
+              <Badge variant="light" color="light"> 
                 Light
               </Badge>
-              <Badge variant="light" color="dark" 
+              <Badge variant="light" color="dark"> 
                 Dark
               </Badge>
             </div>
@@ -124,25 +128,26 @@ export default function BadgePage() {
           </div>
           <div className="p-6 border-t border-gray-100 dark:border-gray-800 xl:p-10">
             <div className="flex flex-wrap gap-4 sm:items-center sm:justify-center">
-              <Badge variant="solid" color="primary" 
+              <Badge variant="solid" color="primary">
+              </Badge>
                 Primary
               </Badge>
-              <Badge variant="solid" color="success" 
+              <Badge variant="solid" color="success">
                 Success
               </Badge>{" "}
-              <Badge variant="solid" color="error" 
+              <Badge variant="solid" color="error">
                 Error
               </Badge>{" "}
-              <Badge variant="solid" color="warning" 
+              <Badge variant="solid" color="warning">
                 Warning
               </Badge>{" "}
-              <Badge variant="solid" color="info" 
+              <Badge variant="solid" color="info">
                 Info
               </Badge>
-              <Badge variant="solid" color="light"
+              <Badge variant="solid" color="light">
                 Light
               </Badge>
-              <Badge variant="solid" color="dark" 
+              <Badge variant="solid" color="dark">
                 Dark
               </Badge>
             </div>
@@ -160,22 +165,22 @@ export default function BadgePage() {
               <Badge variant="light" color="primary"
                 Primary
               </Badge>
-              <Badge variant="light" color="success" 
+              <Badge variant="light" color="success">
                 Success
               </Badge>{" "}
-              <Badge variant="light" color="error" 
+              <Badge variant="light" color="error">
                 Error
               </Badge>{" "}
-              <Badge variant="light" color="warning"
+              <Badge variant="light" color="warning">
                 Warning
               </Badge>{" "}
-              <Badge variant="light" color="info" 
+              <Badge variant="light" color="info">
                 Info
               </Badge>
-              <Badge variant="light" color="light" 
+              <Badge variant="light" color="light">
                 Light
               </Badge>
-              <Badge variant="light" color="dark" 
+              <Badge variant="light" color="dark">
                 Dark
               </Badge>
             </div>
@@ -192,22 +197,22 @@ export default function BadgePage() {
             <div className="flex flex-wrap gap-4 sm:items-center sm:justify-center">
               <Badge variant="solid" color="primary" 
               </Badge>
-              <Badge variant="solid" color="success" 
+              <Badge variant="solid" color="success">
                 Success
               </Badge>{" "}
-              <Badge variant="solid" color="error" 
+              <Badge variant="solid" color="error">
                 Error
               </Badge>{" "}
-              <Badge variant="solid" color="warning" 
+              <Badge variant="solid" color="warning">
                 Warning
               </Badge>{" "}
-              <Badge variant="solid" color="info" 
+              <Badge variant="solid" color="info">
                 Info
               </Badge>
-              <Badge variant="solid" color="light" 
+              <Badge variant="solid" color="light">
                 Light
               </Badge>
-              <Badge variant="solid" color="dark" 
+              <Badge variant="solid" color="dark">
                 Dark
               </Badge>
             </div>
