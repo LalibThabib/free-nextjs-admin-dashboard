@@ -11,7 +11,6 @@ const ICON_OVERRIDES: Record<string, string> = {
 };
 
 
-
 function toSymbolId(materialName: string) {
   // Keep original casing (important for acronyms: "AI Core" -> "AICore")
   // Just remove spaces/punctuation: "Iron Ore" -> "IronOre"

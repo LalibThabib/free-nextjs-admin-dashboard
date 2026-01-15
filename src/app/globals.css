@@ -773,3 +773,7 @@ thead tr {
 th, td {
   border-color: #444444 !important;
 }
+
+html {
+  font-size: 18px;
+}
