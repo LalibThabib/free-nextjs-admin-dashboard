@@ -119,7 +119,7 @@ export async function fetchAllStocks(apiKey: string): Promise<StockRow[]> {
   const locations: { type: StockRow["locationType"]; name: string; warehouseId: number }[] = [];
   (company.bases || []).forEach((b) => locations.push({ type: "Base", name: b.name, warehouseId: b.warehouseId }));
   (company.ships || []).forEach((s) => locations.push({ type: "Ship", name: s.name, warehouseId: s.warehouseId }));
-  if (company.exWhId) locations.push({ type: "Market", name: "Exchange", warehouseId: company.exWhId });
+  if (company.exWhId) locations.push({ type: "Market", name: "Exchange Station", warehouseId: company.exWhId });
 
   const rows: StockRow[] = [];
 

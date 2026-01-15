@@ -44,7 +44,7 @@ fetchCompany(k)
     const bases: string[] = [];
     company.bases?.forEach((b) => bases.push(b.name));
 
-    const locs: string[] = [...bases];
+    const locs: string[] = ["Exchange Station", ...bases];
     company.ships?.forEach((s) => locs.push(s.name));
 
     setLocations(locs);
@@ -1045,6 +1045,7 @@ const isEditing = editingId === rowId;
     <option key={l} value={l} />
   ))}
 </datalist>
+
 <datalist id="clients">
   {Array.from(
     new Set([
