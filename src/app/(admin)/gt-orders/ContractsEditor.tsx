@@ -458,7 +458,7 @@ return (
 
 
 
-<div className="rounded-xl border border-[#444444] bg-[#222222] p-4 text-[#e2e2e2]">
+<div className="rounded-xl border border-[#444444] bg-[##303030] p-4 text-[#e2e2e2]">
   <div className="mb-3 flex items-center justify-between">
     <div className="font-semibold">Contracts</div>
 
