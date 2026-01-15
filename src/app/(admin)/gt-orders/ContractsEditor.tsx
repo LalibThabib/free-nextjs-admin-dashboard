@@ -458,7 +458,7 @@ return (
 
 
 
-<div className="rounded-xl border border-gray-200 bg-white/70 p-4 backdrop-blur dark:border-gray-800 dark:bg-gray-900/60">
+<div className="rounded-xl border border-[#444444] bg-[#222222] p-4 text-[#e2e2e2]">
   <div className="mb-3 flex items-center justify-between">
     <div className="font-semibold">Contracts</div>
 
@@ -474,7 +474,7 @@ return (
   </div>
 
   <div className="overflow-x-auto">
-    <table className="w-full text-sm bg-[#222222] text-[#e2e2e2]">
+    <table className="w-full text-sm bg-[#222222] text-[#e2e2e2]" >
       <thead>
         <tr className="border-b bg-[#444444]">
           <th className="py-2 text-left">Product</th>
