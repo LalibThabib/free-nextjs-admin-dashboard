@@ -1,24 +1,14 @@
 import type { NextConfig } from "next";
 
+const repo = "free-nextjs-admin-dashboard";
+const basePath = process.env.GITHUB_ACTIONS ? `/${repo}` : "";
+
 const nextConfig: NextConfig = {
-  /* config options here */
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
-    return config;
-  },
-    
-    turbopack: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
-      },
-    },
-  
+  output: "export",
+  basePath,
+  assetPrefix: basePath,
+  trailingSlash: true,
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
