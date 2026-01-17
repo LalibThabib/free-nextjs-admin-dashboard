@@ -102,6 +102,26 @@ setRecipeMap(buildRecipeMap(lines));
   })();
 }, []);
 
+function FileContractIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      {/* file */}
+      <path
+        d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7l-5-5z"
+        fill="currentColor"
+        opacity="0.85"
+      />
+      <path d="M14 2v5h5" fill="currentColor" opacity="0.55" />
+
+      {/* simple "$" mark */}
+      <path
+        d="M12 7.6c.45 0 .8.35.8.8v.3c.75.12 1.4.42 1.88.9.34.33.35.86.02 1.2-.33.34-.86.35-1.2.02-.3-.3-.75-.5-1.2-.58V14c1.7.32 2.6 1.26 2.6 2.66 0 1.42-.98 2.4-2.6 2.68v.28c0 .45-.35.8-.8.8s-.8-.35-.8-.8v-.28c-.93-.12-1.72-.48-2.28-1.04-.32-.32-.32-.84 0-1.16.32-.32.84-.32 1.16 0 .34.34.8.56 1.12.64V15.1c-1.55-.3-2.45-1.16-2.45-2.53 0-1.36.92-2.3 2.45-2.56v-.3c0-.45.35-.8.8-.8Zm-.8 2.12c-.6.14-1 .5-1 1.02 0 .52.34.84 1 1.0V9.72Zm1.6 6.03c0-.58-.4-.95-1.6-1.18v2.91c.98-.17 1.6-.68 1.6-1.73Z"
+        fill="currentColor"
+        opacity="0.95"
+      />
+    </svg>
+  );
+}
 
 
 
@@ -693,15 +713,42 @@ return (
   <div className="mb-3 flex items-center justify-between">
     <div className="font-semibold">Contracts</div>
 
-    <button
-      className={"px-3 py-2 text-sm " + btnBaseCls}
-      onClick={() => {
-        if (draftContract) return;
-        setDraftContract({ id: newId(), product: "", destination: "", client: "", unitsPerDay: 0 });
-      }}
-    >
-      + Create contract
-    </button>
+   <button
+  onClick={() => {
+    if (draftContract) return;
+    setDraftContract({ id: newId(), product: "", destination: "", client: "", unitsPerDay: 0 });
+  }}
+  className="
+    group inline-flex items-stretch overflow-hidden rounded-lg
+    border border-white/10 shadow-sm
+    bg-[#344c68] hover:bg-[#2c4058]
+    transition-colors
+  "
+>
+  {/* Icon block */}
+  <span
+    className="
+      flex w-10 items-center justify-center
+      bg-[#2c4058] group-hover:bg-[#25364c]
+      transition-colors
+    "
+  >
+    <FileContractIcon
+      className="
+        h-5 w-5 text-white/70
+        transition-transform transition-colors duration-150
+        group-hover:scale-110 group-hover:text-white/80
+      "
+    />
+  </span>
+
+  {/* Text block */}
+  <span className="px-4 py-2 text-sm font-medium text-white tracking-wide">
+    New Contract
+  </span>
+</button>
+
+
   </div>
 
   <div className={tableShellCls}>
