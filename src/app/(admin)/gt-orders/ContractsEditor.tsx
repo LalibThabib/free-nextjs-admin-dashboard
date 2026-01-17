@@ -21,8 +21,9 @@ import Link from "next/link";
 import React from "react";
 
 
-
 const BASE_PATH = process.env.NODE_ENV === "production" ? "/free-nextjs-admin-dashboard" : "";
+const SORT_ICON = `${BASE_PATH}/images/icons/sorting-arrow.svg`;
+
 
 export default function ContractsEditor() {
 
@@ -163,6 +164,33 @@ const [priceMap, setPriceMap] = useState<Map<string, { current: number | null; a
 
 const LS_MAT_WEIGHTS = "gt_mat_weights_v1";
 const [weightByName, setWeightByName] = useState<Map<string, number>>(new Map());
+type SortKey = "client" | "destination" | "material" | "status" | "missing" | "value";
+
+const [sortKey, setSortKey] = useState<SortKey>("material");
+const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
+
+const handleSort = (k: SortKey) => {
+  if (sortKey !== k) {
+    setSortKey(k);
+    setSortDir("asc");
+  } else {
+    setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+  }
+};
+
+const normSort = (s: string) => (s || "").trim().toLowerCase();
+
+const getRowRatio = (r: { availAtDestination: number; unitsPerDay: number }) => {
+  const needed = Number(r.unitsPerDay || 0);
+  const available = Number(r.availAtDestination || 0);
+  return needed > 0 ? available / needed : 1;
+};
+
+const getRowValue = (r: { product: string; unitsPerDay: number }) => {
+  const px = priceMap.get(r.product);
+  const unit = px?.avg ?? px?.current ?? null;
+  return unit === null ? null : Number(r.unitsPerDay || 0) * unit;
+};
 
 useEffect(() => {
   if (typeof window === "undefined") return;
@@ -445,6 +473,19 @@ setTransportNeeded([...baseTransport, ...ingAsTransport]);
 
 if (!mounted) return null;
 
+const totalValueInfo = (() => {
+  let sum = 0;
+  let unknown = false;
+  for (const r of contractStatus) {
+    const v = getRowValue(r);
+    if (v === null) unknown = true;
+    else sum += v;
+  }
+  return { sum, unknown };
+})();
+
+const totalValueText = `${fmtMoney(totalValueInfo.sum)}${totalValueInfo.unknown ? " + ?" : ""}`;
+
 return (
   <div className="space-y-6">
 
@@ -477,16 +518,94 @@ return (
   </div>
 
   <div className="overflow-x-auto">
-    <table className="w-full text-sm bg-[#222222] text-[#e2e2e2]" >
+    <table className="w-full text-sm bg-[#222222] text-[#e2e2e2]">
       <thead>
         <tr className="border-b bg-[#444444]">
-          <th className="py-2 text-left">Product</th>
-          <th className="py-2 text-left">Destination</th>
-          <th className="py-2 text-left">Client</th>
-          <th className="py-2 text-right">Status</th>
-          <th className="py-2 text-right">Missing</th>
-          <th className="py-2 text-right">Value</th>
-          <th className="py-2 text-right">Actions</th>
+          <th className="py-2 text-left">
+            <button
+              className="inline-flex items-center gap-1 hover:opacity-80"
+              onClick={() => handleSort("client")}
+            >
+              Client
+              <img
+                src={SORT_ICON}
+                alt=""
+                className={`h-2.5 w-2.5 translate-y-[1.5px] ${sortKey === "client" ? "opacity-70" : "opacity-40"} ${sortKey === "client" && sortDir === "asc" ? "rotate-180" : ""}`}
+              />
+            </button>
+          </th>
+
+          <th className="py-2 text-left">
+            <button
+              className="inline-flex items-center gap-1 hover:opacity-80"
+              onClick={() => handleSort("destination")}
+            >
+              Destination
+              <img
+                src={SORT_ICON}
+                alt=""
+                className={`h-2.5 w-2.5 translate-y-[1.5px] ${sortKey === "destination" ? "opacity-70" : "opacity-40"} ${sortKey === "destination" && sortDir === "asc" ? "rotate-180" : ""}`}
+              />
+            </button>
+          </th>
+
+          <th className="py-2 text-left">
+            <button
+              className="inline-flex items-center gap-1 hover:opacity-80"
+              onClick={() => handleSort("material")}
+            >
+              Material
+              <img
+                src={SORT_ICON}
+                alt=""
+                className={`h-2.5 w-2.5 translate-y-[1.5px] ${sortKey === "material" ? "opacity-70" : "opacity-40"} ${sortKey === "material" && sortDir === "asc" ? "rotate-180" : ""}`}
+              />
+            </button>
+          </th>
+
+          <th className="py-2 text-right">
+            <button
+              className="inline-flex w-full items-center justify-end gap-1 hover:opacity-80"
+              onClick={() => handleSort("status")}
+            >
+              Status
+              <img
+                src={SORT_ICON}
+                alt=""
+                className={`h-2.5 w-2.5 translate-y-[1.5px] ${sortKey === "status" ? "opacity-70" : "opacity-40"} ${sortKey === "status" && sortDir === "asc" ? "rotate-180" : ""}`}
+              />
+            </button>
+          </th>
+
+          <th className="py-2 text-right">
+            <button
+              className="inline-flex w-full items-center justify-end gap-1 hover:opacity-80"
+              onClick={() => handleSort("missing")}
+            >
+              Missing
+              <img
+                src={SORT_ICON}
+                alt=""
+                className={`h-2.5 w-2.5 translate-y-[1.5px] ${sortKey === "missing" ? "opacity-70" : "opacity-40"} ${sortKey === "missing" && sortDir === "asc" ? "rotate-180" : ""}`}
+              />
+            </button>
+          </th>
+
+          <th className="py-2 text-right">
+            <button
+              className="inline-flex w-full items-center justify-end gap-1 hover:opacity-80"
+              onClick={() => handleSort("value")}
+            >
+              Value
+              <img
+                src={SORT_ICON}
+                alt=""
+                className={`h-2.5 w-2.5 translate-y-[1.5px] ${sortKey === "value" ? "opacity-70" : "opacity-40"} ${sortKey === "value" && sortDir === "asc" ? "rotate-180" : ""}`}
+              />
+            </button>
+          </th>
+
+          <th className="py-2 text-right">Edit</th>
         </tr>
       </thead>
 
@@ -495,13 +614,11 @@ return (
           <tr className="border-b">
             <td className="py-2">
               <input
-                list="materials"
-                value={draftContract.product}
-                placeholder="Product"
+                list="clients"
+                value={draftContract.client}
+                placeholder="Client"
                 className="w-56 rounded border px-2 py-1"
-                onChange={(e) =>
-                  setDraftContract({ ...draftContract, product: e.target.value })
-                }
+                onChange={(e) => setDraftContract({ ...draftContract, client: e.target.value })}
               />
             </td>
 
@@ -516,15 +633,17 @@ return (
                 }
               />
             </td>
-            <td className="py-2">
-            <input
-                list="clients"
-                value={draftContract.client}
-                placeholder="Client"
-                className="w-56 rounded border px-2 py-1"
-                onChange={(e) => setDraftContract({ ...draftContract, client: e.target.value })}
-              />
 
+            <td className="py-2">
+              <input
+                list="materials"
+                value={draftContract.product}
+                placeholder="Material"
+                className="w-56 rounded border px-2 py-1"
+                onChange={(e) =>
+                  setDraftContract({ ...draftContract, product: e.target.value })
+                }
+              />
             </td>
 
             <td className="py-2 text-right">
@@ -573,7 +692,6 @@ return (
                       { id: newId(), product, destination, client, unitsPerDay },
                     ];
 
-
                     setContracts(next);
                     saveContracts(next);
                     setDraftContract(null);
@@ -594,180 +712,216 @@ return (
             </td>
           </tr>
         ) : (
+          [...contractStatus]
+            .sort((a, b) => {
+              const cmpStr = (x: string, y: string) => normSort(x).localeCompare(normSort(y));
+              const cmpNum = (x: number, y: number) => (x === y ? 0 : x < y ? -1 : 1);
 
+              // For Value: keep nulls at the bottom in BOTH directions.
+              const cmpNullableValue = (x: number | null, y: number | null) => {
+                if (x === null && y === null) return 0;
+                if (x === null) return 1;
+                if (y === null) return -1;
+                const base = cmpNum(x, y);
+                return sortDir === "asc" ? base : -base;
+              };
 
-  contractStatus.map((r) => {
- const c = contracts.find((x) => x.id === r.id);
-const rowId = r.id;
-const isEditing = editingId === rowId;
+              let cmp = 0;
 
+              if (sortKey === "client") cmp = cmpStr(a.client, b.client);
+              else if (sortKey === "destination") cmp = cmpStr(a.destination, b.destination);
+              else if (sortKey === "material") cmp = cmpStr(a.product, b.product);
+              else if (sortKey === "status") cmp = cmpNum(getRowRatio(a), getRowRatio(b));
+              else if (sortKey === "missing") cmp = cmpNum(Number(a.missing || 0), Number(b.missing || 0));
+              else cmp = cmpNullableValue(getRowValue(a), getRowValue(b));
 
-  return (
-    <tr key={rowId} className="border-b">
-      <td className="py-2">
-        {isEditing && c ? (
-          <input
-  list="materials"
-  className="w-56 rounded border px-2 py-1"
-  value={editDraft?.product || ""}
-  onChange={(e) =>
-    setEditDraft((d) => (d ? { ...d, product: e.target.value } : d))
-  }
-/>
+              if (cmp !== 0) {
+                if (sortKey === "value") return cmp;
+                return sortDir === "asc" ? cmp : -cmp;
+              }
 
-        ) : (
-  <MaterialLabel name={r.product} />
-        )}
+              // Tie-breakers for stable sorting
+              return (
+                cmpStr(a.client, b.client) ||
+                cmpStr(a.destination, b.destination) ||
+                cmpStr(a.product, b.product) ||
+                String(a.id).localeCompare(String(b.id))
+              );
+            })
+            .map((r) => {
+              const c = contracts.find((x) => x.id === r.id);
+              const rowId = r.id;
+              const isEditing = editingId === rowId;
 
-      </td>
-     <td className="py-2">
-  {isEditing && c ? (
-    <input
-      list="locations"
-      className="w-56 rounded border px-2 py-1"
-      value={editDraft?.destination || ""}
-      onChange={(e) =>
-        setEditDraft((d) => (d ? { ...d, destination: e.target.value } : d))
-      }
-    />
-  ) : (
-    r.destination
-  )}
-</td>
+              return (
+                <tr key={rowId} className="border-b">
+                  <td className="py-2">
+                    {isEditing && c ? (
+                      <input
+                        list="clients"
+                        className="w-56 rounded border px-2 py-1"
+                        value={editDraft?.client || ""}
+                        onChange={(e) =>
+                          setEditDraft((d) => (d ? { ...d, client: e.target.value } : d))
+                        }
+                      />
+                    ) : (
+                      c?.client || ""
+                    )}
+                  </td>
 
-<td className="py-2">
-  {isEditing && c ? (
-            <input
-          list="clients"
-          className="w-56 rounded border px-2 py-1"
-          value={editDraft?.client || ""}
-          onChange={(e) =>
-            setEditDraft((d) => (d ? { ...d, client: e.target.value } : d))
-          }
-        />
+                  <td className="py-2">
+                    {isEditing && c ? (
+                      <input
+                        list="locations"
+                        className="w-56 rounded border px-2 py-1"
+                        value={editDraft?.destination || ""}
+                        onChange={(e) =>
+                          setEditDraft((d) => (d ? { ...d, destination: e.target.value } : d))
+                        }
+                      />
+                    ) : (
+                      r.destination
+                    )}
+                  </td>
 
-  ) : (
-    c?.client || ""
-  )}
-</td>
+                  <td className="py-2">
+                    {isEditing && c ? (
+                      <input
+                        list="materials"
+                        className="w-56 rounded border px-2 py-1"
+                        value={editDraft?.product || ""}
+                        onChange={(e) =>
+                          setEditDraft((d) => (d ? { ...d, product: e.target.value } : d))
+                        }
+                      />
+                    ) : (
+                      <MaterialLabel name={r.product} />
+                    )}
+                  </td>
 
-      <td className="py-2 text-right">
-  {isEditing && c ? (
-    <div className="flex items-center justify-end gap-2">
-      <input
-        type="number"
-        className="w-28 rounded border px-2 py-1 text-right"
-        value={Number(editDraft?.unitsPerDay || 0)}
-        onChange={(e) =>
-          setEditDraft((d) =>
-            d ? { ...d, unitsPerDay: Number(e.target.value || 0) } : d
-          )
-        }
-      />
-      <span className="text-xs opacity-70">Units/day</span>
-    </div>
-  ) : (
-    (() => {
-      const available = r.availAtDestination;
-      const needed = r.unitsPerDay;
-      const ratio = needed > 0 ? available / needed : 1;
+                  <td className="py-2 text-right">
+                    {isEditing && c ? (
+                      <div className="flex items-center justify-end gap-2">
+                        <input
+                          type="number"
+                          className="w-28 rounded border px-2 py-1 text-right"
+                          value={Number(editDraft?.unitsPerDay || 0)}
+                          onChange={(e) =>
+                            setEditDraft((d) =>
+                              d ? { ...d, unitsPerDay: Number(e.target.value || 0) } : d
+                            )
+                          }
+                        />
+                        <span className="text-xs opacity-70">Units/day</span>
+                      </div>
+                    ) : (
+                      (() => {
+                        const available = r.availAtDestination;
+                        const needed = r.unitsPerDay;
+                        const ratio = needed > 0 ? available / needed : 1;
 
-      const cls =
-        ratio < 0.3
-          ? "text-[#e74d3d]"
-          : ratio < 1
-          ? "text-[#d06c1a]"
-          : "text-[#00bc8c]";
+                        const cls =
+                          ratio < 0.3
+                            ? "text-[#e74d3d]"
+                            : ratio < 1
+                            ? "text-[#d06c1a]"
+                            : "text-[#00bc8c]";
 
-      return <span className={cls}>{available}/{needed}</span>;
-    })()
-  )}
-</td>
+                        return (
+                          <span className={cls}>
+                            {available}/{needed}
+                          </span>
+                        );
+                      })()
+                    )}
+                  </td>
 
-<td className="py-2 text-right">{r.missing}</td>
+                  <td className="py-2 text-right">{r.missing}</td>
 
-<td className="py-2 text-right">
-  {fmtMoney(
-    (() => {
-      const px = priceMap.get(r.product);
-      const unit = px?.avg ?? px?.current ?? null;
-      return unit === null ? null : r.unitsPerDay * unit;
-    })()
-  )}
-</td>
+                  <td className="py-2 text-right">
+                    {fmtMoney(
+                      (() => {
+                        const v = getRowValue(r);
+                        return v === null ? null : v;
+                      })()
+                    )}
+                  </td>
 
+                  <td className="py-2 text-right">
+                    {isEditing && c ? (
+                      <div className="flex justify-end gap-2">
+                        <button
+                          className="rounded border px-2 py-1 text-sm"
+                          onClick={() => {
+                            if (!c) return;
+                            const next = contracts.filter((x) => x.id !== c.id);
+                            setContracts(next);
+                            saveContracts(next);
+                            setEditingId(null);
+                            setEditDraft(null);
+                          }}
+                          title="Cancel"
+                        >
+                          ✕
+                        </button>
 
+                        <button
+                          className="rounded border px-2 py-1 text-sm"
+                          onClick={() => {
+                            if (!editDraft) return;
 
-      <td className="py-2 text-right">
-        {isEditing && c ? (
-          <div className="flex justify-end gap-2">
-            <button
-              className="rounded border px-2 py-1 text-sm"
-              onClick={() => {
-  if (!c) return;
-  const next = contracts.filter((x) => x.id !== c.id);
-  setContracts(next);
-  saveContracts(next);
-  setEditingId(null);
-  setEditDraft(null);
-}}
+                            const product = (editDraft.product || "").trim();
+                            const destination = (editDraft.destination || "").trim();
+                            const unitsPerDay = Math.ceil(Number(editDraft.unitsPerDay || 0));
 
+                            if (!product || !destination || unitsPerDay <= 0) return;
 
-              title="Cancel"
-            >
-              ✕
-            </button>
+                            const client = (editDraft.client || "").trim();
 
-            <button
-              className="rounded border px-2 py-1 text-sm"
-              onClick={() => {
-  if (!editDraft) return;
+                            const next = contracts.map((x) =>
+                              x.id === editDraft.id ? { ...x, product, destination, client, unitsPerDay } : x
+                            );
 
-  const product = (editDraft.product || "").trim();
-  const destination = (editDraft.destination || "").trim();
-  const unitsPerDay = Math.ceil(Number(editDraft.unitsPerDay || 0));
+                            setContracts(next);
+                            saveContracts(next);
 
-  if (!product || !destination || unitsPerDay <= 0) return;
-
-  const client = (editDraft.client || "").trim();
-
-    const next = contracts.map((x) =>
-      x.id === editDraft.id ? { ...x, product, destination, client, unitsPerDay } : x
-    );
-
-
-  setContracts(next);
-  saveContracts(next);
-
-  setEditingId(null);
-  setEditDraft(null);
-}}
-
-              title="Confirm"
-            >
-              ✓
-            </button>
-          </div>
-        ) : (
-         <button
-  className="rounded border px-2 py-1 text-xs"
-  onClick={() => {
-    if (!c) return;
-    setEditingId(c.id);
-    setEditDraft({ ...c });
-  }}
->
-  Edit
-</button>
-
-        )}
-      </td>
-    </tr>
-  );
-})
-
+                            setEditingId(null);
+                            setEditDraft(null);
+                          }}
+                          title="Confirm"
+                        >
+                          ✓
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        className="rounded border px-2 py-1 text-xs"
+                        onClick={() => {
+                          if (!c) return;
+                          setEditingId(c.id);
+                          setEditDraft({ ...c });
+                        }}
+                      >
+                        Edit
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              );
+            })
         )}
       </tbody>
+
+      <tfoot>
+        <tr className="border-t bg-[#303030]">
+          <td className="py-2 font-semibold" colSpan={5}>
+            Total
+          </td>
+          <td className="py-2 text-right font-semibold">{totalValueText}</td>
+          <td className="py-2"></td>
+        </tr>
+      </tfoot>
     </table>
   </div>
 </div>
