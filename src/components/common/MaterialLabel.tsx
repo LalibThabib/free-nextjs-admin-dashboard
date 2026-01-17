@@ -6,7 +6,9 @@ const BASE_PATH = process.env.NODE_ENV === "production" ? "/free-nextjs-admin-da
 const SPRITE_URL = `${BASE_PATH}/images/assets/sprite-BAyyILFt.svg`;
 const ICON_OVERRIDES: Record<string, string> = {
   "Copper": "CopperBar",
+  "Iron": "IronBar",
   "Hydrogen Fuel": "HydrogenFuelCell",
+  "Superconducting Coil" : "Superconductors",
   // add more as you find them
 };
 
