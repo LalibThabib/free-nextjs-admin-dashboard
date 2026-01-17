@@ -24,7 +24,6 @@ import React from "react";
 const BASE_PATH = process.env.NODE_ENV === "production" ? "/free-nextjs-admin-dashboard" : "";
 const SORT_ICON = `${BASE_PATH}/images/icons/sorting-arrow.svg`;
 
-
 export default function ContractsEditor() {
 
 
@@ -162,12 +161,66 @@ const [priceMap, setPriceMap] = useState<Map<string, { current: number | null; a
   () => new Map()
 );
 
+
 const LS_MAT_WEIGHTS = "gt_mat_weights_v1";
 const [weightByName, setWeightByName] = useState<Map<string, number>>(new Map());
 type SortKey = "client" | "destination" | "material" | "status" | "missing" | "value";
 
 const [sortKey, setSortKey] = useState<SortKey>("material");
 const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
+
+type TransportSortKey = "material" | "units" | "weight" | "location";
+const [transportSortKey, setTransportSortKey] = useState<TransportSortKey>("material");
+const [transportSortDir, setTransportSortDir] = useState<"asc" | "desc">("asc");
+
+const handleTransportSort = (k: TransportSortKey) => {
+  if (transportSortKey !== k) {
+    setTransportSortKey(k);
+    setTransportSortDir("asc");
+  } else {
+    setTransportSortDir((d) => (d === "asc" ? "desc" : "asc"));
+  }
+};
+
+type ProductionSortKey = "material" | "units" | "location" | "inputsStatus";
+const [productionSortKey, setProductionSortKey] = useState<ProductionSortKey>("material");
+const [productionSortDir, setProductionSortDir] = useState<"asc" | "desc">("asc");
+
+const handleProductionSort = (k: ProductionSortKey) => {
+  if (productionSortKey !== k) {
+    setProductionSortKey(k);
+    setProductionSortDir("asc");
+  } else {
+    setProductionSortDir((d) => (d === "asc" ? "desc" : "asc"));
+  }
+};
+
+type BuySortKey = "material" | "units" | "location" | "current" | "average" | "total";
+const [buySortKey, setBuySortKey] = useState<BuySortKey>("material");
+const [buySortDir, setBuySortDir] = useState<"asc" | "desc">("asc");
+
+const handleBuySort = (k: BuySortKey) => {
+  if (buySortKey !== k) {
+    setBuySortKey(k);
+    setBuySortDir("asc");
+  } else {
+    setBuySortDir((d) => (d === "asc" ? "desc" : "asc"));
+  }
+};
+
+const calcWeightT = (material: string, units: number): number | null => {
+  const w = weightByName.get(material); // tonnes per unit
+  if (w == null) return null;
+  return Number(units || 0) * w;
+};
+
+const fmtWeightT = (material: string, units: number) => {
+  const total = calcWeightT(material, units);
+  if (total == null) return "—";
+  const rounded1 = Math.round(total * 10) / 10;
+  const text = Number.isInteger(rounded1) ? String(rounded1) : rounded1.toFixed(1);
+  return `${text} t`;
+};
 
 const handleSort = (k: SortKey) => {
   if (sortKey !== k) {
@@ -356,12 +409,15 @@ const fmtMoney = (v: number | null) => {
   return `${v.toFixed(2)}$`;
 };
 
+// ...inside ContractsEditor component, BEFORE the useEffect that uses it:
+const btnBaseCls =
+  "rounded-md border border-white/10 bg-[#2b2b2b] text-[#e2e2e2] hover:bg-[#333333] active:bg-[#2a2a2a]";
 
 useEffect(() => {
   setRightContent(
     <div className="flex items-center gap-3">
       <button
-        className="rounded border px-3 py-2 text-sm"
+        className={"px-3 py-2 text-sm " + btnBaseCls}
         onClick={() => refresh()}
         disabled={isRefreshing}
         style={{
@@ -471,8 +527,6 @@ setTransportNeeded([...baseTransport, ...ingAsTransport]);
 
 }, [contracts, lastStockMap, makeRows, recipeMap]);
 
-if (!mounted) return null;
-
 const totalValueInfo = (() => {
   let sum = 0;
   let unknown = false;
@@ -486,7 +540,140 @@ const totalValueInfo = (() => {
 
 const totalValueText = `${fmtMoney(totalValueInfo.sum)}${totalValueInfo.unknown ? " + ?" : ""}`;
 
+const sortedTransportNeeded = React.useMemo(() => {
+  const rows = [...transportNeeded];
+  const dir = transportSortDir;
+
+  const cmpStr = (a: string, b: string) => normSort(a).localeCompare(normSort(b));
+  const cmpNum = (a: number, b: number) => (a === b ? 0 : a < b ? -1 : 1);
+  const cmpNullable = (a: number | null, b: number | null) => {
+    if (a === null && b === null) return 0;
+    if (a === null) return 1;
+    if (b === null) return -1;
+    const base = cmpNum(a, b);
+    return dir === "asc" ? base : -base;
+  };
+
+  rows.sort((a, b) => {
+    let cmp = 0;
+
+    if (transportSortKey === "material") cmp = cmpStr(a.material, b.material);
+    else if (transportSortKey === "units") cmp = cmpNum(Number(a.units || 0), Number(b.units || 0));
+    else if (transportSortKey === "weight")
+      return cmpNullable(calcWeightT(a.material, a.units), calcWeightT(b.material, b.units));
+    else cmp = cmpStr(`${a.from} → ${a.to}`, `${b.from} → ${b.to}`);
+
+    if (cmp !== 0) return dir === "asc" ? cmp : -cmp;
+
+    // Tie-breakers for stable sorting
+    return (
+      cmpStr(a.material, b.material) ||
+      cmpStr(`${a.from} → ${a.to}`, `${b.from} → ${b.to}`) ||
+      String(a.units).localeCompare(String(b.units))
+    );
+  });
+
+  return rows;
+}, [transportNeeded, transportSortKey, transportSortDir, weightByName]);
+
+const sortedProductionNeeded = React.useMemo(() => {
+  const rows = [...productionNeeded];
+  const dir = productionSortDir;
+
+  const cmpStr = (a: string, b: string) => normSort(a).localeCompare(normSort(b));
+  const cmpNum = (a: number, b: number) => (a === b ? 0 : a < b ? -1 : 1);
+
+  rows.sort((a, b) => {
+    let cmp = 0;
+
+    if (productionSortKey === "material") cmp = cmpStr(a.product, b.product);
+    else if (productionSortKey === "units") cmp = cmpNum(Number(a.unitsPerDay || 0), Number(b.unitsPerDay || 0));
+    else if (productionSortKey === "location") cmp = cmpStr(a.produceAt, b.produceAt);
+    else cmp = cmpStr(a.inputsStatus, b.inputsStatus);
+
+    if (cmp !== 0) return dir === "asc" ? cmp : -cmp;
+
+    return (
+      cmpStr(a.product, b.product) ||
+      cmpStr(a.produceAt, b.produceAt) ||
+      String(a.unitsPerDay).localeCompare(String(b.unitsPerDay))
+    );
+  });
+
+  return rows;
+}, [productionNeeded, productionSortKey, productionSortDir]);
+
+const sortedBuyNeeded = React.useMemo(() => {
+  const rows = [...buyNeeded];
+  const dir = buySortDir;
+
+  const cmpStr = (a: string, b: string) => normSort(a).localeCompare(normSort(b));
+  const cmpNum = (a: number, b: number) => (a === b ? 0 : a < b ? -1 : 1);
+  const cmpNullable = (a: number | null, b: number | null) => {
+    if (a === null && b === null) return 0;
+    if (a === null) return 1;
+    if (b === null) return -1;
+    const base = cmpNum(a, b);
+    return dir === "asc" ? base : -base;
+  };
+
+  const getCur = (mat: string) => priceMap.get(mat)?.current ?? null;
+  const getAvg = (mat: string) => priceMap.get(mat)?.avg ?? null;
+
+  rows.sort((a, b) => {
+    let cmp = 0;
+
+    if (buySortKey === "material") cmp = cmpStr(a.material, b.material);
+    else if (buySortKey === "units") cmp = cmpNum(Number(a.unitsPerDay || 0), Number(b.unitsPerDay || 0));
+    else if (buySortKey === "location") cmp = 0; // fixed to Exchange Station for now
+    else if (buySortKey === "current") return cmpNullable(getCur(a.material), getCur(b.material));
+    else if (buySortKey === "average") return cmpNullable(getAvg(a.material), getAvg(b.material));
+    else {
+      const ta = (() => {
+        const cur = getCur(a.material);
+        return cur === null ? null : cur * Number(a.unitsPerDay || 0);
+      })();
+      const tb = (() => {
+        const cur = getCur(b.material);
+        return cur === null ? null : cur * Number(b.unitsPerDay || 0);
+      })();
+      return cmpNullable(ta, tb);
+    }
+
+    if (cmp !== 0) return dir === "asc" ? cmp : -cmp;
+
+    return (
+      cmpStr(a.material, b.material) ||
+      String(a.unitsPerDay).localeCompare(String(b.unitsPerDay))
+    );
+  });
+
+  return rows;
+}, [buyNeeded, buySortKey, buySortDir, priceMap]);
+
+
+  // IMPORTANT: keep all hooks above any conditional returns.
+  if (!mounted) return null;
+
+  // Table styling (matched to GT UI)
+  const panelCls =
+    "rounded-lg border border-[#3a3a3a] bg-[#2b2b2b] p-4 text-[#e2e2e2] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]";
+  const tableShellCls =
+    "overflow-x-auto rounded-md border border-[#3a3a3a] bg-[#242424]";
+  const tableCls = "w-full text-sm text-[#e2e2e2]";
+  const theadRowCls = "border-b border-[#3a3a3a] bg-[#2a2a2a]";
+  const thLeftCls =
+    "px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-wider text-[#b7b7b7]";
+  const thRightCls =
+    "px-3 py-2 text-right text-[11px] font-semibold uppercase tracking-wider text-[#b7b7b7]";
+  const tdLeftCls = "px-3 py-2 text-left";
+  const tdRightCls = "px-3 py-2 text-right";
+  const rowCls = "border-b border-[#333333] hover:bg-[#2d2d2d]";
+  const inputBaseCls =
+    "rounded-md border border-[#3a3a3a] bg-[#1f1f1f] px-2 py-1 text-[#e2e2e2] placeholder:text-[#777] focus:outline-none focus:ring-1 focus:ring-[#375b7f]";
+
 return (
+
   <div className="space-y-6">
 
       {stocksErr && (
@@ -502,12 +689,12 @@ return (
 
 
 
-<div className="rounded-xl border border-[#444444] bg-[#444444] p-4 text-[#e2e2e2]">
+<div className={panelCls}>
   <div className="mb-3 flex items-center justify-between">
     <div className="font-semibold">Contracts</div>
 
     <button
-      className="rounded border px-3 py-2 text-sm"
+      className={"px-3 py-2 text-sm " + btnBaseCls}
       onClick={() => {
         if (draftContract) return;
         setDraftContract({ id: newId(), product: "", destination: "", client: "", unitsPerDay: 0 });
@@ -517,11 +704,11 @@ return (
     </button>
   </div>
 
-  <div className="overflow-x-auto">
-    <table className="w-full text-sm bg-[#222222] text-[#e2e2e2]">
+  <div className={tableShellCls}>
+    <table className={tableCls}>
       <thead>
-        <tr className="border-b bg-[#444444]">
-          <th className="py-2 text-left">
+        <tr className={theadRowCls}>
+          <th className={thLeftCls}>
             <button
               className="inline-flex items-center gap-1 hover:opacity-80"
               onClick={() => handleSort("client")}
@@ -535,7 +722,7 @@ return (
             </button>
           </th>
 
-          <th className="py-2 text-left">
+          <th className={thLeftCls}>
             <button
               className="inline-flex items-center gap-1 hover:opacity-80"
               onClick={() => handleSort("destination")}
@@ -549,7 +736,7 @@ return (
             </button>
           </th>
 
-          <th className="py-2 text-left">
+          <th className={thLeftCls}>
             <button
               className="inline-flex items-center gap-1 hover:opacity-80"
               onClick={() => handleSort("material")}
@@ -563,7 +750,7 @@ return (
             </button>
           </th>
 
-          <th className="py-2 text-right">
+          <th className={thRightCls}>
             <button
               className="inline-flex w-full items-center justify-end gap-1 hover:opacity-80"
               onClick={() => handleSort("status")}
@@ -577,7 +764,7 @@ return (
             </button>
           </th>
 
-          <th className="py-2 text-right">
+          <th className={thRightCls}>
             <button
               className="inline-flex w-full items-center justify-end gap-1 hover:opacity-80"
               onClick={() => handleSort("missing")}
@@ -591,7 +778,7 @@ return (
             </button>
           </th>
 
-          <th className="py-2 text-right">
+          <th className={thRightCls}>
             <button
               className="inline-flex w-full items-center justify-end gap-1 hover:opacity-80"
               onClick={() => handleSort("value")}
@@ -605,53 +792,53 @@ return (
             </button>
           </th>
 
-          <th className="py-2 text-right">Edit</th>
+          <th className={thRightCls}>Edit</th>
         </tr>
       </thead>
 
       <tbody>
         {draftContract && (
-          <tr className="border-b">
-            <td className="py-2">
+          <tr className={rowCls + " bg-[#232323]"}>
+            <td className={tdLeftCls}>
               <input
                 list="clients"
                 value={draftContract.client}
                 placeholder="Client"
-                className="w-56 rounded border px-2 py-1"
+                className={"w-56 " + inputBaseCls}
                 onChange={(e) => setDraftContract({ ...draftContract, client: e.target.value })}
               />
             </td>
 
-            <td className="py-2">
+            <td className={tdLeftCls}>
               <input
                 list="locations"
                 value={draftContract.destination}
                 placeholder="Destination"
-                className="w-56 rounded border px-2 py-1"
+                className={"w-56 " + inputBaseCls}
                 onChange={(e) =>
                   setDraftContract({ ...draftContract, destination: e.target.value })
                 }
               />
             </td>
 
-            <td className="py-2">
+            <td className={tdLeftCls}>
               <input
                 list="materials"
                 value={draftContract.product}
                 placeholder="Material"
-                className="w-56 rounded border px-2 py-1"
+                className={"w-56 " + inputBaseCls}
                 onChange={(e) =>
                   setDraftContract({ ...draftContract, product: e.target.value })
                 }
               />
             </td>
 
-            <td className="py-2 text-right">
+            <td className={tdRightCls}>
               <div className="flex items-center justify-end gap-2">
                 <input
                   type="number"
                   value={Number(draftContract.unitsPerDay || 0)}
-                  className="w-28 rounded border px-2 py-1 text-right"
+                  className={"w-28 text-right " + inputBaseCls}
                   onChange={(e) =>
                     setDraftContract({
                       ...draftContract,
@@ -663,13 +850,13 @@ return (
               </div>
             </td>
 
-            <td className="py-2 text-right">—</td>
-            <td className="py-2 text-right">—</td>
+            <td className={tdRightCls}>—</td>
+            <td className={tdRightCls}>—</td>
 
-            <td className="py-2 text-right">
+            <td className={tdRightCls}>
               <div className="flex justify-end gap-2">
                 <button
-                  className="rounded border px-2 py-1 text-sm"
+                  className={"px-2 py-1 text-sm " + btnBaseCls}
                   onClick={() => setDraftContract(null)}
                   title="Cancel"
                 >
@@ -677,7 +864,7 @@ return (
                 </button>
 
                 <button
-                  className="rounded border px-2 py-1 text-sm"
+                  className={"px-2 py-1 text-sm " + btnBaseCls}
                   onClick={() => {
                     const product = (draftContract.product || "").trim();
                     const destination = (draftContract.destination || "").trim();
@@ -707,7 +894,7 @@ return (
 
         {contractStatus.length === 0 && !draftContract ? (
           <tr>
-            <td className="py-4 text-sm opacity-70" colSpan={7}>
+            <td className="px-3 py-4 text-sm opacity-70" colSpan={7}>
               No contracts yet.
             </td>
           </tr>
@@ -754,12 +941,12 @@ return (
               const isEditing = editingId === rowId;
 
               return (
-                <tr key={rowId} className="border-b">
-                  <td className="py-2">
+                <tr key={rowId} className={rowCls}>
+                  <td className={tdLeftCls}>
                     {isEditing && c ? (
                       <input
                         list="clients"
-                        className="w-56 rounded border px-2 py-1"
+                        className={"w-56 " + inputBaseCls}
                         value={editDraft?.client || ""}
                         onChange={(e) =>
                           setEditDraft((d) => (d ? { ...d, client: e.target.value } : d))
@@ -770,11 +957,11 @@ return (
                     )}
                   </td>
 
-                  <td className="py-2">
+                  <td className={tdLeftCls}>
                     {isEditing && c ? (
                       <input
                         list="locations"
-                        className="w-56 rounded border px-2 py-1"
+                        className={"w-56 " + inputBaseCls}
                         value={editDraft?.destination || ""}
                         onChange={(e) =>
                           setEditDraft((d) => (d ? { ...d, destination: e.target.value } : d))
@@ -785,11 +972,11 @@ return (
                     )}
                   </td>
 
-                  <td className="py-2">
+                  <td className={tdLeftCls}>
                     {isEditing && c ? (
                       <input
                         list="materials"
-                        className="w-56 rounded border px-2 py-1"
+                        className={"w-56 " + inputBaseCls}
                         value={editDraft?.product || ""}
                         onChange={(e) =>
                           setEditDraft((d) => (d ? { ...d, product: e.target.value } : d))
@@ -800,12 +987,12 @@ return (
                     )}
                   </td>
 
-                  <td className="py-2 text-right">
+                  <td className={tdRightCls}>
                     {isEditing && c ? (
                       <div className="flex items-center justify-end gap-2">
                         <input
                           type="number"
-                          className="w-28 rounded border px-2 py-1 text-right"
+                          className={"w-28 text-right " + inputBaseCls}
                           value={Number(editDraft?.unitsPerDay || 0)}
                           onChange={(e) =>
                             setEditDraft((d) =>
@@ -829,17 +1016,19 @@ return (
                             : "text-[#00bc8c]";
 
                         return (
-                          <span className={cls}>
-                            {available}/{needed}
+                          <span>
+                            <span className={cls}>{available}</span>
+                            <span className="text-[#e2e2e2]">/</span>
+                            <span className="text-[#e2e2e2]">{needed}</span>
                           </span>
                         );
                       })()
                     )}
                   </td>
 
-                  <td className="py-2 text-right">{r.missing}</td>
+                  <td className={tdRightCls}>{r.missing}</td>
 
-                  <td className="py-2 text-right">
+                  <td className={tdRightCls}>
                     {fmtMoney(
                       (() => {
                         const v = getRowValue(r);
@@ -848,11 +1037,11 @@ return (
                     )}
                   </td>
 
-                  <td className="py-2 text-right">
+                  <td className={tdRightCls}>
                     {isEditing && c ? (
                       <div className="flex justify-end gap-2">
                         <button
-                          className="rounded border px-2 py-1 text-sm"
+                          className={"px-2 py-1 text-sm " + btnBaseCls}
                           onClick={() => {
                             if (!c) return;
                             const next = contracts.filter((x) => x.id !== c.id);
@@ -867,7 +1056,7 @@ return (
                         </button>
 
                         <button
-                          className="rounded border px-2 py-1 text-sm"
+                          className={"px-2 py-1 text-sm " + btnBaseCls}
                           onClick={() => {
                             if (!editDraft) return;
 
@@ -896,7 +1085,7 @@ return (
                       </div>
                     ) : (
                       <button
-                        className="rounded border px-2 py-1 text-xs"
+                        className={"px-2 py-1 text-xs " + btnBaseCls}
                         onClick={() => {
                           if (!c) return;
                           setEditingId(c.id);
@@ -914,39 +1103,39 @@ return (
       </tbody>
 
       <tfoot>
-        <tr className="border-t bg-[#303030]">
-          <td className="py-2 font-semibold" colSpan={5}>
+        <tr className="border-t border-[#3a3a3a] bg-[#1f1f1f]">
+          <td className="px-3 py-2 font-semibold" colSpan={5}>
             Total
           </td>
-          <td className="py-2 text-right font-semibold">{totalValueText}</td>
-          <td className="py-2"></td>
+          <td className="px-3 py-2 text-right font-semibold">{totalValueText}</td>
+          <td className="px-3 py-2"></td>
         </tr>
       </tfoot>
     </table>
   </div>
 </div>
 
-<div className="mt-6 rounded-lg border border-[#444444] bg-[#303030] p-4 text-[#e2e2e2]">
+<div className={"mt-6 " + panelCls}>
   <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
     <div className="font-semibold">Actions</div>
 
     <div className="flex flex-wrap gap-2">
       <button
-        className="rounded border px-3 py-1 text-sm"
+        className={"px-3 py-1 text-sm " + btnBaseCls}
         onClick={() => setShowTransport((v) => !v)}
       >
         {showTransport ? "Hide" : "Show"} Transport
       </button>
 
       <button
-        className="rounded border px-3 py-1 text-sm"
+        className={"px-3 py-1 text-sm " + btnBaseCls}
         onClick={() => setShowProduction((v) => !v)}
       >
         {showProduction ? "Hide" : "Show"} Production
       </button>
 
       <button
-        className="rounded border px-3 py-1 text-sm"
+        className={"px-3 py-1 text-sm " + btnBaseCls}
         onClick={() => setShowBuy((v) => !v)}
       >
         {showBuy ? "Hide" : "Show"} Buy
@@ -956,7 +1145,7 @@ return (
 
 {showTransport && (
   <div className="py-4">
-<div className="mt-6 rounded-lg border p-4">
+<div className={"mt-6 " + panelCls}>
   <div className="font-semibold mb-2">Transport needed</div>
 
   {transportNeeded.length === 0 ? (
@@ -965,8 +1154,8 @@ return (
     </div>
   ) : (
     <>
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
+      <div className={tableShellCls}>
+        <table className={tableCls}>
           <colgroup>
   <col style={{ width: "11%" }} />
   <col style={{ width: "9%" }} />
@@ -980,50 +1169,88 @@ return (
 
 
 <thead>
-  <tr className="border-b">
-    <th className="py-2 text-left">Material</th>
-    <th className="py-2 text-left">Units</th>
-    <th className="py-2 text-left">Weight</th>
-    <th className="py-2 text-left">Location</th>
+  <tr className={theadRowCls}>
+    <th className={thLeftCls}>
+      <button
+        className="inline-flex items-center gap-1 hover:opacity-80"
+        onClick={() => handleTransportSort("material")}
+      >
+        Material
+        <img
+          src={SORT_ICON}
+          alt=""
+          className={`h-2.5 w-2.5 translate-y-[1.5px] ${transportSortKey === "material" ? "opacity-70" : "opacity-40"} ${transportSortKey === "material" && transportSortDir === "asc" ? "rotate-180" : ""}`}
+        />
+      </button>
+    </th>
 
-    <th className="py-2"></th>
-    <th className="py-2"></th>
-    <th className="py-2"></th>
+    <th className={thLeftCls}>
+      <button
+        className="inline-flex items-center gap-1 hover:opacity-80"
+        onClick={() => handleTransportSort("units")}
+      >
+        Units
+        <img
+          src={SORT_ICON}
+          alt=""
+          className={`h-2.5 w-2.5 translate-y-[1.5px] ${transportSortKey === "units" ? "opacity-70" : "opacity-40"} ${transportSortKey === "units" && transportSortDir === "asc" ? "rotate-180" : ""}`}
+        />
+      </button>
+    </th>
 
-    <th className="py-2 text-left">Notes</th>
+    <th className={thLeftCls}>
+      <button
+        className="inline-flex items-center gap-1 hover:opacity-80"
+        onClick={() => handleTransportSort("weight")}
+      >
+        Weight
+        <img
+          src={SORT_ICON}
+          alt=""
+          className={`h-2.5 w-2.5 translate-y-[1.5px] ${transportSortKey === "weight" ? "opacity-70" : "opacity-40"} ${transportSortKey === "weight" && transportSortDir === "asc" ? "rotate-180" : ""}`}
+        />
+      </button>
+    </th>
+
+    <th className={thLeftCls}>
+      <button
+        className="inline-flex items-center gap-1 hover:opacity-80"
+        onClick={() => handleTransportSort("location")}
+      >
+        Location
+        <img
+          src={SORT_ICON}
+          alt=""
+          className={`h-2.5 w-2.5 translate-y-[1.5px] ${transportSortKey === "location" ? "opacity-70" : "opacity-40"} ${transportSortKey === "location" && transportSortDir === "asc" ? "rotate-180" : ""}`}
+        />
+      </button>
+    </th>
+
+    <th className={thLeftCls}></th>
+    <th className={thLeftCls}></th>
+    <th className={thLeftCls}></th>
+
+    <th className={thLeftCls}>Notes</th>
   </tr>
 </thead>
 
 <tbody>
-  {transportNeeded.slice(0, 30).map((r, idx) => (
-    <tr key={`${r.material}|${r.from}|${r.to}|${idx}`} className="border-b">
-      <td className="py-2 text-left"><MaterialLabel name={r.material} /></td>
-      <td className="py-2 text-left">{r.units}</td>
-     <td className="py-2 text-left">
-  {(() => {
-    const w = weightByName.get(r.material); // tonnes per unit
-    if (w == null) return "—";
-
-    const total = r.units * w; // tonnes
-    const rounded1 = Math.round(total * 10) / 10;
-
-    const text =
-      Number.isInteger(rounded1) ? String(rounded1) : rounded1.toFixed(1);
-
-    return `${text} t`;
-  })()}
-</td>
+  {sortedTransportNeeded.slice(0, 30).map((r, idx) => (
+    <tr key={`${r.material}|${r.from}|${r.to}|${idx}`} className={rowCls}>
+      <td className={tdLeftCls}><MaterialLabel name={r.material} /></td>
+      <td className={tdLeftCls}>{r.units}</td>
+     <td className={tdLeftCls}>{fmtWeightT(r.material, r.units)}</td>
 
 
 
       
-      <td className="py-2 text-left">{r.from} → {r.to}</td>
+      <td className={tdLeftCls}>{r.from} → {r.to}</td>
 
-      <td className="py-2"></td>
-      <td className="py-2"></td>
-      <td className="py-2"></td>
+      <td className="px-3 py-2"></td>
+      <td className="px-3 py-2"></td>
+      <td className="px-3 py-2"></td>
 
-      <td className="py-2 text-left">{r.notes}</td>
+      <td className={tdLeftCls}>{r.notes}</td>
     </tr>
   ))}
 </tbody>
@@ -1042,7 +1269,7 @@ return (
 {showProduction && (
  <div className="py-4">
 
-<div className="mt-6 rounded-lg border border-[#444444] bg-[#303030] p-4 text-[#e2e2e2]">
+<div className={"mt-6 " + panelCls}>
   <div className="font-semibold mb-2">Production needed</div>
 
   {productionNeeded.length === 0 ? (
@@ -1051,8 +1278,8 @@ return (
     </div>
   ) : (
     <>
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
+      <div className={tableShellCls}>
+        <table className={tableCls}>
 
               <colgroup>
       <col style={{ width: "11%" }} />
@@ -1065,34 +1292,85 @@ return (
        </colgroup>
 
                   <thead>
-          <tr className="border-b">
-            <th className="py-2 text-left">Material</th>
-            <th className="py-2 text-left">Units</th>
-            <th className="py-2 text-left">Location</th>
+          <tr className={theadRowCls}>
+            <th className={thLeftCls}>
+              <button
+                className="inline-flex items-center gap-1 hover:opacity-80"
+                onClick={() => handleProductionSort("material")}
+              >
+                Material
+                <img
+                  src={SORT_ICON}
+                  alt=""
+                  className={`h-2.5 w-2.5 translate-y-[1.5px] ${productionSortKey === "material" ? "opacity-70" : "opacity-40"} ${productionSortKey === "material" && productionSortDir === "asc" ? "rotate-180" : ""}`}
+                />
+              </button>
+            </th>
 
-            <th className="py-2 text-left">Inputs status</th>
-            <th className="py-2"></th>
-            <th className="py-2"></th>
+            <th className={thLeftCls}>
+              <button
+                className="inline-flex items-center gap-1 hover:opacity-80"
+                onClick={() => handleProductionSort("units")}
+              >
+                Units
+                <img
+                  src={SORT_ICON}
+                  alt=""
+                  className={`h-2.5 w-2.5 translate-y-[1.5px] ${productionSortKey === "units" ? "opacity-70" : "opacity-40"} ${productionSortKey === "units" && productionSortDir === "asc" ? "rotate-180" : ""}`}
+                />
+              </button>
+            </th>
 
-            <th className="py-2 text-left">Notes</th>
+            <th className={thLeftCls}>
+              <button
+                className="inline-flex items-center gap-1 hover:opacity-80"
+                onClick={() => handleProductionSort("location")}
+              >
+                Location
+                <img
+                  src={SORT_ICON}
+                  alt=""
+                  className={`h-2.5 w-2.5 translate-y-[1.5px] ${productionSortKey === "location" ? "opacity-70" : "opacity-40"} ${productionSortKey === "location" && productionSortDir === "asc" ? "rotate-180" : ""}`}
+                />
+              </button>
+            </th>
+
+            <th className={thLeftCls}>
+              <button
+                className="inline-flex items-center gap-1 hover:opacity-80"
+                onClick={() => handleProductionSort("inputsStatus")}
+              >
+                Inputs status
+                <img
+                  src={SORT_ICON}
+                  alt=""
+                  className={`h-2.5 w-2.5 translate-y-[1.5px] ${productionSortKey === "inputsStatus" ? "opacity-70" : "opacity-40"} ${productionSortKey === "inputsStatus" && productionSortDir === "asc" ? "rotate-180" : ""}`}
+                />
+              </button>
+            </th>
+
+            <th className={thLeftCls}></th>
+            <th className={thLeftCls}></th>
+
+            <th className={thLeftCls}>Notes</th>
           </tr>
         </thead>
 
           <tbody>
-            {productionNeeded.slice(0, 30).map((r, idx) => (
-              <tr key={`${r.product}|${idx}`} className="border-b">
-                  <td className="py-2 text-left">
+            {sortedProductionNeeded.slice(0, 30).map((r, idx) => (
+              <tr key={`${r.product}|${idx}`} className={rowCls}>
+                  <td className={tdLeftCls}>
                   <MaterialLabel name={r.product} />
                     </td>
 
-                  <td className="py-2 text-left">{r.unitsPerDay}</td>
-                  <td className="py-2 text-left">{r.produceAt}</td>
+                  <td className={tdLeftCls}>{r.unitsPerDay}</td>
+                  <td className={tdLeftCls}>{r.produceAt}</td>
 
-                  <td className="py-2 text-left">{r.inputsStatus}</td>
-                  <td className="py-2"></td>
-                  <td className="py-2"></td>
+                  <td className={tdLeftCls}>{r.inputsStatus}</td>
+                  <td className={tdLeftCls}></td>
+                  <td className={tdLeftCls}></td>
 
-                  <td className="py-2 text-left">{r.notes}</td>
+                  <td className={tdLeftCls}>{r.notes}</td>
 
 
               </tr>
@@ -1111,7 +1389,7 @@ return (
 
 {showBuy && (
 <div className="py-4">
-<div className="mt-6 rounded-lg border border-[#444444] bg-[#303030] p-4 text-[#e2e2e2]">
+<div className={"mt-6 " + panelCls}>
   <div className="font-semibold mb-2">
   Buy needed
   {priceMap.size === 0 ? (
@@ -1124,8 +1402,8 @@ return (
     <div className="text-sm opacity-70">No buys needed.</div>
   ) : (
     <>
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
+      <div className={tableShellCls}>
+        <table className={tableCls}>
 
           <colgroup>
   <col style={{ width: "11%" }} />
@@ -1138,42 +1416,118 @@ return (
 </colgroup>
 
           <thead>
-  <tr className="border-b">
-    <th className="py-2 text-left">Material</th>
-    <th className="py-2 text-left">Units</th>
-    <th className="py-2 text-left">Location</th>
+  <tr className={theadRowCls}>
+    <th className={thLeftCls}>
+      <button
+        className="inline-flex items-center gap-1 hover:opacity-80"
+        onClick={() => handleBuySort("material")}
+      >
+        Material
+        <img
+          src={SORT_ICON}
+          alt=""
+          className={`h-2.5 w-2.5 translate-y-[1.5px] ${buySortKey === "material" ? "opacity-70" : "opacity-40"} ${buySortKey === "material" && buySortDir === "asc" ? "rotate-180" : ""}`}
+        />
+      </button>
+    </th>
 
-    <th className="py-2 text-left">Current</th>
-    <th className="py-2 text-left">Average</th>
-    <th className="py-2 text-left">Total</th>
+    <th className={thLeftCls}>
+      <button
+        className="inline-flex items-center gap-1 hover:opacity-80"
+        onClick={() => handleBuySort("units")}
+      >
+        Units
+        <img
+          src={SORT_ICON}
+          alt=""
+          className={`h-2.5 w-2.5 translate-y-[1.5px] ${buySortKey === "units" ? "opacity-70" : "opacity-40"} ${buySortKey === "units" && buySortDir === "asc" ? "rotate-180" : ""}`}
+        />
+      </button>
+    </th>
 
-    <th className="py-2 text-left">Notes</th>
+    <th className={thLeftCls}>
+      <button
+        className="inline-flex items-center gap-1 hover:opacity-80"
+        onClick={() => handleBuySort("location")}
+      >
+        Location
+        <img
+          src={SORT_ICON}
+          alt=""
+          className={`h-2.5 w-2.5 translate-y-[1.5px] ${buySortKey === "location" ? "opacity-70" : "opacity-40"} ${buySortKey === "location" && buySortDir === "asc" ? "rotate-180" : ""}`}
+        />
+      </button>
+    </th>
+
+    <th className={thLeftCls}>
+      <button
+        className="inline-flex items-center gap-1 hover:opacity-80"
+        onClick={() => handleBuySort("current")}
+      >
+        Current
+        <img
+          src={SORT_ICON}
+          alt=""
+          className={`h-2.5 w-2.5 translate-y-[1.5px] ${buySortKey === "current" ? "opacity-70" : "opacity-40"} ${buySortKey === "current" && buySortDir === "asc" ? "rotate-180" : ""}`}
+        />
+      </button>
+    </th>
+
+    <th className={thLeftCls}>
+      <button
+        className="inline-flex items-center gap-1 hover:opacity-80"
+        onClick={() => handleBuySort("average")}
+      >
+        Average
+        <img
+          src={SORT_ICON}
+          alt=""
+          className={`h-2.5 w-2.5 translate-y-[1.5px] ${buySortKey === "average" ? "opacity-70" : "opacity-40"} ${buySortKey === "average" && buySortDir === "asc" ? "rotate-180" : ""}`}
+        />
+      </button>
+    </th>
+
+    <th className={thLeftCls}>
+      <button
+        className="inline-flex items-center gap-1 hover:opacity-80"
+        onClick={() => handleBuySort("total")}
+      >
+        Total
+        <img
+          src={SORT_ICON}
+          alt=""
+          className={`h-2.5 w-2.5 translate-y-[1.5px] ${buySortKey === "total" ? "opacity-70" : "opacity-40"} ${buySortKey === "total" && buySortDir === "asc" ? "rotate-180" : ""}`}
+        />
+      </button>
+    </th>
+
+    <th className={thLeftCls}>Notes</th>
   </tr>
 </thead>
 
 
           <tbody>
-  {buyNeeded.slice(0, 40).map((r, idx) => {
+  {sortedBuyNeeded.slice(0, 40).map((r, idx) => {
     const px = priceMap.get(r.material);
     const cur = px?.current ?? null;
     const avg = px?.avg ?? null;
     const total = cur !== null ? cur * r.unitsPerDay : null;
 
     return (
-      <tr key={`${r.material}|${idx}`} className="border-b">
-        <td className="py-2 text-left">
+      <tr key={`${r.material}|${idx}`} className={rowCls}>
+        <td className={tdLeftCls}>
           <MaterialLabel name={r.material} />
         </td>
 
-        <td className="py-2 text-left">{r.unitsPerDay}</td>
-        <td className="py-2 text-left">Exchange Station</td>
+        <td className={tdLeftCls}>{r.unitsPerDay}</td>
+        <td className={tdLeftCls}>Exchange Station</td>
 
-        <td className="py-2 text-left">{fmtMoney(cur)}</td>
-        <td className="py-2 text-left">{fmtMoney(avg)}</td>
-        <td className="py-2 text-left">{fmtMoney(total)}</td>
+        <td className={tdLeftCls}>{fmtMoney(cur)}</td>
+        <td className={tdLeftCls}>{fmtMoney(avg)}</td>
+        <td className={tdLeftCls}>{fmtMoney(total)}</td>
 
 
-        <td className="py-2 text-left">{r.notes}</td>
+        <td className={tdLeftCls}>{r.notes}</td>
 
       </tr>
     );
