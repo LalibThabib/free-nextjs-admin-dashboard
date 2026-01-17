@@ -30,7 +30,7 @@ function AdminShell({ children }: { children: React.ReactNode }) {
 
         rightContent={rightContent}
       />
-      <div className="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">{children}</div>
+      <div className="gt-container py-4 md:py-6">{children}</div>
     </div>
   );
 }

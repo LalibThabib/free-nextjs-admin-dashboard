@@ -19,8 +19,8 @@ const toggleApplicationMenu = () => {
 
 return (
    <header className="sticky top-0 flex w-full bg-[#375b7f] border-b border-[#375b7f] z-99999">
-      <div className="flex flex-col items-center justify-between grow lg:flex-row lg:px-6">
-        <div className="flex items-center justify-between w-full gap-2 px-3 py-3 border-b border-gray-200 dark:border-gray-800 sm:gap-4 lg:justify-normal lg:border-b-0 lg:px-0 lg:py-2">
+      <div className="gt-container flex flex-col items-center justify-between lg:flex-row">
+        <div className="flex items-center justify-between w-full gap-2 px-0 py-3 border-b border-gray-200 dark:border-gray-800 sm:gap-4 lg:justify-normal lg:border-b-0 lg:px-0 lg:py-2">
         
           <Link href="/" className="lg:hidden">
             <Image
@@ -38,9 +38,10 @@ return (
               alt="Logo"
             />
           </Link>
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex flex-1 items-center gap-3 justify-start">
   {leftContent}
 </div>
+
 
           <button
             onClick={toggleApplicationMenu}
@@ -65,11 +66,12 @@ return (
         <div
           className={`${
             isApplicationMenuOpen ? "flex" : "hidden"
-          } items-center justify-between w-full gap-4 px-5 py-4 lg:py-2 lg:flex shadow-theme-md lg:justify-end lg:px-22 lg:shadow-none`}
+          } items-center justify-between w-full gap-4 px-0 py-4 lg:py-2 lg:flex shadow-theme-md lg:justify-end lg:shadow-none`}
         >
-          <div className="mr-3 hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3">
   {rightContent}
 </div>
+
 
 
         
