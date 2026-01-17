@@ -23,7 +23,7 @@ function toSymbolId(materialName: string) {
 
 export function MaterialLabel({
   name,
-  size = 18,
+  size = 27,
   className = "",
   showText = true,
 }: {

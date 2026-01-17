@@ -804,7 +804,7 @@ return (
                 list="clients"
                 value={draftContract.client}
                 placeholder="Client"
-                className={"w-56 " + inputBaseCls}
+                className={"w-full min-w-0 " + inputBaseCls}
                 onChange={(e) => setDraftContract({ ...draftContract, client: e.target.value })}
               />
             </td>
@@ -814,7 +814,7 @@ return (
                 list="locations"
                 value={draftContract.destination}
                 placeholder="Destination"
-                className={"w-56 " + inputBaseCls}
+                className={"w-full min-w-0 " + inputBaseCls}
                 onChange={(e) =>
                   setDraftContract({ ...draftContract, destination: e.target.value })
                 }
@@ -826,7 +826,7 @@ return (
                 list="materials"
                 value={draftContract.product}
                 placeholder="Material"
-                className={"w-56 " + inputBaseCls}
+                className={"w-full min-w-0 " + inputBaseCls}
                 onChange={(e) =>
                   setDraftContract({ ...draftContract, product: e.target.value })
                 }
@@ -846,7 +846,7 @@ return (
                     })
                   }
                 />
-                <span className="text-xs opacity-70">Units/day</span>
+                <span className="hidden sm:inline text-xs opacity-70">Units/day</span>
               </div>
             </td>
 
@@ -946,7 +946,7 @@ return (
                     {isEditing && c ? (
                       <input
                         list="clients"
-                        className={"w-56 " + inputBaseCls}
+                        className={"w-full min-w-0 " + inputBaseCls}
                         value={editDraft?.client || ""}
                         onChange={(e) =>
                           setEditDraft((d) => (d ? { ...d, client: e.target.value } : d))
@@ -961,7 +961,7 @@ return (
                     {isEditing && c ? (
                       <input
                         list="locations"
-                        className={"w-56 " + inputBaseCls}
+                        className={"w-full min-w-0 " + inputBaseCls}
                         value={editDraft?.destination || ""}
                         onChange={(e) =>
                           setEditDraft((d) => (d ? { ...d, destination: e.target.value } : d))
@@ -976,7 +976,7 @@ return (
                     {isEditing && c ? (
                       <input
                         list="materials"
-                        className={"w-56 " + inputBaseCls}
+                        className={"w-full min-w-0 " + inputBaseCls}
                         value={editDraft?.product || ""}
                         onChange={(e) =>
                           setEditDraft((d) => (d ? { ...d, product: e.target.value } : d))
@@ -1000,7 +1000,7 @@ return (
                             )
                           }
                         />
-                        <span className="text-xs opacity-70">Units/day</span>
+                        <span className="hidden sm:inline text-xs opacity-70">Units/day</span>
                       </div>
                     ) : (
                       (() => {
@@ -1393,7 +1393,7 @@ return (
   <div className="font-semibold mb-2">
   Buy needed
   {priceMap.size === 0 ? (
-    <span className="ml-2 text-xs opacity-70">(prices unavailable — rate limited)</span>
+    <span className="hidden sm:inline text-xs opacity-70">(prices unavailable — rate limited)</span>
   ) : null}
 </div>
 

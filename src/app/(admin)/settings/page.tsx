@@ -7,6 +7,10 @@ import { MaterialLabel } from "@/components/common/MaterialLabel";
 
 const LS_API_KEY = "gt_api_key_v1";
 
+const BASE_PATH = process.env.NODE_ENV === "production" ? "/free-nextjs-admin-dashboard" : "";
+const SORT_ICON = `${BASE_PATH}/images/icons/sorting-arrow.svg`;
+
+
 type EditMode =
   | { kind: "none" }
   | { kind: "edit"; idx: number }
@@ -61,6 +65,10 @@ export default function SettingsPage() {
   const [editMode, setEditMode] = useState<EditMode>({ kind: "none" });
   const [draft, setDraft] = useState<MakeRow>({ material: "", base: "" });
 
+  const [makeSortKey, setMakeSortKey] = useState<"material" | "base">("material");
+const [makeSortDir, setMakeSortDir] = useState<"asc" | "desc">("asc");
+
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -81,6 +89,40 @@ export default function SettingsPage() {
     setMaterials(Array.isArray(mats) ? mats : []);
     setLocations(Array.isArray(bases) ? bases : []);
   }, [mounted]);
+
+  const toggleMakeSort = (key: "material" | "base") => {
+  if (makeSortKey !== key) {
+    setMakeSortKey(key);
+    setMakeSortDir("asc");
+  } else {
+    setMakeSortDir((d) => (d === "asc" ? "desc" : "asc"));
+  }
+};
+
+const norm = (s: string) => (s || "").trim().toLowerCase();
+
+const sortedMakeView = useMemo(() => {
+  const rows = makeRows.map((r, idx) => ({ r, idx }));
+
+  rows.sort((a, b) => {
+    const av = norm(makeSortKey === "material" ? a.r.material : a.r.base);
+    const bv = norm(makeSortKey === "material" ? b.r.material : b.r.base);
+
+    let cmp = av.localeCompare(bv);
+    if (cmp !== 0) return makeSortDir === "asc" ? cmp : -cmp;
+
+    // stable tie-breakers
+    cmp =
+      norm(a.r.material).localeCompare(norm(b.r.material)) ||
+      norm(a.r.base).localeCompare(norm(b.r.base)) ||
+      (a.idx - b.idx);
+
+    return makeSortDir === "asc" ? cmp : -cmp;
+  });
+
+  return rows;
+}, [makeRows, makeSortKey, makeSortDir]);
+
 
   const canSaveDraft = useMemo(() => {
     const m = (draft.material || "").trim();
@@ -186,14 +228,84 @@ export default function SettingsPage() {
             <table className={tableCls}>
               <thead className="bg-[#333333]">
                 <tr>
-                  <th className={thCls}>Material</th>
-                  <th className={thCls}>Base</th>
+                  <th className={thCls}>
+  <button
+    className="inline-flex items-center gap-1 hover:opacity-80"
+    onClick={() => toggleMakeSort("material")}
+  >
+    Material
+    <img
+      src={SORT_ICON}
+      alt=""
+      className={`h-2.5 w-2.5 translate-y-[1.5px] ${
+        makeSortKey === "material" ? "opacity-70" : "opacity-40"
+      } ${makeSortKey === "material" && makeSortDir === "asc" ? "rotate-180" : ""}`}
+    />
+  </button>
+</th>
+
+<th className={thCls}>
+  <button
+    className="inline-flex items-center gap-1 hover:opacity-80"
+    onClick={() => toggleMakeSort("base")}
+  >
+    Base
+    <img
+      src={SORT_ICON}
+      alt=""
+      className={`h-2.5 w-2.5 translate-y-[1.5px] ${
+        makeSortKey === "base" ? "opacity-70" : "opacity-40"
+      } ${makeSortKey === "base" && makeSortDir === "asc" ? "rotate-180" : ""}`}
+    />
+  </button>
+</th>
+
                   <th className={`${thCls} text-right`}>Actions</th>
                 </tr>
               </thead>
 
               <tbody className="bg-[#2b2b2b]">
-                {makeRows.map((r, idx) => {
+
+                {editMode.kind === "new" ? (
+                  <tr className={rowCls}>
+                    <td className={tdCls}>
+                      <div className="flex items-center gap-2">
+                        <MaterialLabel name={draft.material} size={18} showText={false} />
+                        <input
+                          list="materials"
+                          value={draft.material}
+                          placeholder="Material"
+                          className={inputCellCls}
+                          onChange={(e) => setDraft((d) => ({ ...d, material: e.target.value }))}
+                        />
+                      </div>
+                    </td>
+                    <td className={tdCls}>
+                      <div className="flex items-center gap-2">
+                        <PinIcon className="opacity-70" />
+                        <input
+                          list="locations"
+                          value={draft.base}
+                          placeholder="Base"
+                          className={inputCellCls}
+                          onChange={(e) => setDraft((d) => ({ ...d, base: e.target.value }))}
+                        />
+                      </div>
+                    </td>
+                    <td className={`${tdCls} text-right`}>
+                      <div className="flex items-center justify-end gap-2">
+                        <button className={btnSmCls} onClick={commitEdit} disabled={!canSaveDraft}>
+                          Add
+                        </button>
+                        <button className={btnSmCls} onClick={cancelEdit}>
+                          Cancel
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ) : null}
+
+                {sortedMakeView.map(({ r, idx }) => {
                   const isEditing = editMode.kind === "edit" && editMode.idx === idx;
 
                   return (
@@ -277,45 +389,6 @@ export default function SettingsPage() {
                     </tr>
                   );
                 })}
-
-                {editMode.kind === "new" ? (
-                  <tr className={rowCls}>
-                    <td className={tdCls}>
-                      <div className="flex items-center gap-2">
-                        <MaterialLabel name={draft.material} size={18} showText={false} />
-                        <input
-                          list="materials"
-                          value={draft.material}
-                          placeholder="Material"
-                          className={inputCellCls}
-                          onChange={(e) => setDraft((d) => ({ ...d, material: e.target.value }))}
-                        />
-                      </div>
-                    </td>
-                    <td className={tdCls}>
-                      <div className="flex items-center gap-2">
-                        <PinIcon className="opacity-70" />
-                        <input
-                          list="locations"
-                          value={draft.base}
-                          placeholder="Base"
-                          className={inputCellCls}
-                          onChange={(e) => setDraft((d) => ({ ...d, base: e.target.value }))}
-                        />
-                      </div>
-                    </td>
-                    <td className={`${tdCls} text-right`}>
-                      <div className="flex items-center justify-end gap-2">
-                        <button className={btnSmCls} onClick={commitEdit} disabled={!canSaveDraft}>
-                          Add
-                        </button>
-                        <button className={btnSmCls} onClick={cancelEdit}>
-                          Cancel
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ) : null}
 
                 {makeRows.length === 0 && editMode.kind !== "new" ? (
                   <tr className="border-t border-white/10">
