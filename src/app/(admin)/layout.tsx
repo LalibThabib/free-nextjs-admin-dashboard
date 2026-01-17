@@ -14,19 +14,16 @@ function AdminShell({ children }: { children: React.ReactNode }) {
  [background-repeat:repeat] [background-size:400px_400px]">
       <AppHeader
         leftContent={
-  <div className="mx-auto w-full max-w-(--breakpoint-2xl) px-4 md:px-6">
-    <div className="flex items-center gap-3 pl-16">
-      <img
-  src={`${BASE_PATH}/images/logo/app-logo.svg`}
-  alt="Galactic Contracts"
-  className="h-7 w-7"
-/>
-
-      <div className="text-xl font-semibold">Galactic Contracts</div>
-
-    </div>
+  <div className="flex items-center gap-3">
+    <img
+      src={`${BASE_PATH}/images/logo/app-logo.svg`}
+      alt="Galactic Contracts"
+      className="h-7 w-7"
+    />
+    <div className="text-xl font-semibold">Galactic Contracts</div>
   </div>
 }
+
 
         rightContent={rightContent}
       />
